@@ -2,10 +2,581 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Geiss — Bildungshistoriker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --ink-light: #555;
+      --ink-faint: #999;
+      --accent: #2c4a6e;
+      --accent-warm: #8b6348;
+      --accent-green: #4a6e52;
+      --bg: #faf9f6;
+      --bg-warm: #f3f0eb;
+      --rule: #d8d3cb;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* LANGUAGE BAR */
+    .lang-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,249,246,0.95);
+      border-bottom: 1px solid var(--rule);
+      display: flex; justify-content: flex-end;
+      padding: 0.55rem 2rem; gap: 0.6rem;
+      backdrop-filter: blur(10px);
+    }
+    .lang-btn {
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: none; border: 1px solid var(--rule);
+      padding: 0.2rem 0.7rem; cursor: pointer;
+      color: var(--ink-light); border-radius: 2px; transition: all 0.2s;
+    }
+    .lang-btn.active, .lang-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* LAYOUT */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    /* HERO */
+    .hero {
+      padding: 7.5rem 0 3.5rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 3rem; align-items: end;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .hero-title {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.05rem; color: var(--accent);
+      margin-top: 0.55rem; line-height: 1.5;
+    }
+    .hero-meta { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .hero-meta span { font-size: 0.82rem; color: var(--ink-light); }
+    .hero-meta strong { font-weight: 500; color: var(--ink); }
+    .hero-orcid {
+      margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; color: var(--ink-faint); text-decoration: none;
+      border: 1px solid var(--rule); padding: 0.3rem 0.8rem; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .hero-orcid:hover { border-color: #a6ce39; color: #4c7a1e; }
+    .hero-orcid svg { width: 16px; height: 16px; }
+    .hero-badge {
+      background: var(--bg-warm); border: 1px solid var(--rule);
+      border-radius: 4px; padding: 1.2rem 1.5rem; text-align: center;
+    }
+    .hero-badge .stat { margin-bottom: 1rem; }
+    .hero-badge .stat:last-child { margin-bottom: 0; }
+    .hero-badge .num {
+      font-family: var(--serif); font-size: 1.9rem; font-weight: 700;
+      color: var(--accent); display: block; line-height: 1;
+    }
+    .hero-badge .num-label {
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-faint); display: block; margin-top: 0.2rem;
+    }
+
+    /* SKELETON */
+    .skeleton {
+      background: linear-gradient(90deg, var(--bg-warm) 25%, var(--rule) 50%, var(--bg-warm) 75%);
+      background-size: 200% 100%; animation: shimmer 1.4s infinite;
+      border-radius: 3px; height: 1em; margin: 0.4rem 0;
+    }
+    .skeleton.wide { width: 80%; }
+    .skeleton.medium { width: 55%; }
+    .skeleton.narrow { width: 35%; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* NAV */
+    .site-nav {
+      position: sticky; top: 36px; z-index: 90;
+      background: rgba(250,249,246,0.95); border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(10px);
+    }
+    .site-nav ul { display: flex; list-style: none; }
+    .site-nav a {
+      display: block; padding: 0.85rem 1.1rem;
+      font-size: 0.76rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-light); text-decoration: none;
+      border-bottom: 2px solid transparent; transition: all 0.2s;
+    }
+    .site-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* SECTIONS */
+    section { padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-child { border-bottom: none; }
+    .section-label {
+      font-size: 0.67rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent-warm); margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .section-heading {
+      font-family: var(--serif); font-size: 1.5rem; font-weight: 700;
+      margin-bottom: 1.4rem; line-height: 1.25;
+    }
+
+    /* CV TABLE */
+    .cv-table { width: 100%; border-collapse: collapse; }
+    .cv-table tr { border-bottom: 1px solid var(--rule); }
+    .cv-table tr:last-child { border-bottom: none; }
+    .cv-table td { padding: 0.9rem 0; vertical-align: top; }
+    .cv-table td:first-child {
+      width: 130px; font-size: 0.76rem; color: var(--ink-faint);
+      padding-right: 1.5rem; padding-top: 1rem;
+      font-variant-numeric: tabular-nums; white-space: nowrap;
+    }
+    .cv-table td:nth-child(2) { color: var(--ink); }
+    .cv-table td:nth-child(2) em {
+      font-family: var(--serif); font-style: italic;
+      color: var(--ink-light); font-size: 0.88rem; display: block; margin-top: 0.15rem;
+    }
+
+    /* KEYWORDS */
+    .keyword-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .keyword {
+      font-size: 0.78rem; background: var(--bg-warm);
+      border: 1px solid var(--rule); padding: 0.25rem 0.75rem;
+      border-radius: 2px; color: var(--ink-light);
+    }
+
+    /* PUBLICATIONS */
+    .pub-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .pub-filter {
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: none; border: 1px solid var(--rule);
+      padding: 0.28rem 0.85rem; cursor: pointer;
+      color: var(--ink-light); border-radius: 2px; transition: all 0.2s;
+    }
+    .pub-filter.active, .pub-filter:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .pub-year-group { margin-bottom: 2rem; }
+    .pub-year {
+      font-size: 0.8rem; font-weight: 500; color: var(--ink-faint);
+      border-bottom: 1px solid var(--rule); padding-bottom: 0.35rem; margin-bottom: 0.8rem;
+    }
+    .pub-item {
+      display: grid; grid-template-columns: 4px 1fr;
+      gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--bg-warm);
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-bar { width: 3px; border-radius: 2px; margin-top: 4px; background: var(--rule); }
+    .pub-item[data-type="book"] .pub-bar { background: var(--accent); }
+    .pub-item[data-type="article"] .pub-bar { background: var(--accent-warm); }
+    .pub-item[data-type="chapter"] .pub-bar { background: var(--accent-green); }
+    .pub-title {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.95rem; color: var(--ink); line-height: 1.45;
+    }
+    .pub-title a {
+      color: inherit; text-decoration: none;
+      border-bottom: 1px solid var(--rule); transition: border-color 0.2s;
+    }
+    .pub-title a:hover { border-bottom-color: var(--accent); }
+    .pub-meta { font-size: 0.8rem; color: var(--ink-faint); margin-top: 0.2rem; }
+    .pub-type-tag {
+      display: inline-block; font-size: 0.63rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.12rem 0.45rem; border-radius: 2px; margin-top: 0.35rem;
+      background: var(--bg-warm); color: var(--ink-faint);
+    }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; margin-top: 0.5rem; }
+    .contact-card { background: var(--bg-warm); border: 1px solid var(--rule); border-radius: 4px; padding: 1.2rem 1.4rem; }
+    .contact-card-label { font-size: 0.66rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.4rem; }
+    .contact-card-value { font-size: 0.88rem; color: var(--ink); }
+    .contact-card-value a { color: var(--accent); text-decoration: none; }
+    .contact-card-value a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 0; text-align: center; font-size: 0.73rem; color: var(--ink-faint); }
+
+    /* LANG */
+    body.lang-en .de { display: none; }
+    body.lang-de .en { display: none; }
+
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; gap: 2rem; }
+      .site-nav a { padding: 0.7rem 0.65rem; font-size: 0.68rem; }
+      .page-wrap { padding: 0 1.2rem; }
+      .cv-table td:first-child { width: 90px; }
+    }
+  </style>
 </head>
-<body>
-  <h1>Hallo, Test</h1>
-  <p>Willkommen.</p>
+<body class="lang-de">
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('de')" id="btn-de">DE</button>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<div class="page-wrap">
+
+  <header class="hero">
+    <div>
+      <h1 class="hero-name">Michael Geiss</h1>
+      <p class="hero-title de">Bildungshistoriker &amp; Zentrumsleiter</p>
+      <p class="hero-title en">Educational Historian &amp; Centre Director</p>
+      <div class="hero-meta">
+        <span class="de"><strong>Derzeitige Position:</strong> Leiter Zentrum Bildung und Digitaler Wandel &amp; Professor für Erziehungswissenschaft</span>
+        <span class="en"><strong>Current Position:</strong> Director, Centre for Education and Digital Transformation &amp; Professor of Educational Science</span>
+        <span><strong>Pädagogische Hochschule Zürich</strong></span>
+      </div>
+      <a class="hero-orcid" href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener">
+        <svg viewBox="0 0 256 256" fill="#a6ce39"><path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0zm-16.3 64.4h-17V192h17V64.4zm34.6 0h-17.6l-.1 127.6H147c37.4 0 63.5-25.4 63.5-63.8 0-40.2-26-63.8-64.2-63.8zm-.8 111.2h-0.4V80.8h.4c28.8 0 47.3 17.8 47.3 47.4 0 29.9-18.5 47.4-47.3 47.4z"/></svg>
+        ORCID 0000-0002-0809-2427
+      </a>
+    </div>
+    <div class="hero-badge">
+      <div class="stat">
+        <span class="num" id="pub-count">—</span>
+        <span class="num-label de">Publikationen</span>
+        <span class="num-label en">Publications</span>
+      </div>
+      <div class="stat">
+        <span class="num">9+</span>
+        <span class="num-label de">Jahre Forschung</span>
+        <span class="num-label en">Years Research</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <ul>
+      <li><a href="#vita"><span class="de">Vita</span><span class="en">Vita</span></a></li>
+      <li><a href="#forschung"><span class="de">Forschung</span><span class="en">Research</span></a></li>
+      <li><a href="#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a></li>
+      <li><a href="#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a></li>
+    </ul>
+  </nav>
+
+  <section id="vita">
+    <div class="section-label de">Akademische Laufbahn</div>
+    <div class="section-label en">Academic Career</div>
+
+    <h2 class="section-heading de">Ausbildung</h2>
+    <h2 class="section-heading en">Education</h2>
+    <table class="cv-table" id="education-table">
+      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
+      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
+    </table>
+
+    <h2 class="section-heading de" style="margin-top:2.5rem;">Anstellungen</h2>
+    <h2 class="section-heading en" style="margin-top:2.5rem;">Employment</h2>
+    <table class="cv-table" id="employment-table">
+      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
+      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
+    </table>
+  </section>
+
+  <section id="forschung">
+    <div class="section-label de">Schwerpunkte</div>
+    <div class="section-label en">Focus Areas</div>
+    <h2 class="section-heading de">Forschung</h2>
+    <h2 class="section-heading en">Research</h2>
+    <p class="de" style="font-family:var(--serif);font-style:italic;color:var(--ink-light);font-size:1rem;line-height:1.8;max-width:640px;">
+      Meine Forschung bewegt sich an der Schnittstelle von Bildungsgeschichte, Digitalisierung und Bildungsarbeit. Im Zentrum stehen historische und gegenwärtige Transformationsprozesse in Bildungsinstitutionen sowie die Geschichte des Lernens im Arbeitsleben.
+    </p>
+    <p class="en" style="font-family:var(--serif);font-style:italic;color:var(--ink-light);font-size:1rem;line-height:1.8;max-width:640px;">
+      My research sits at the intersection of the history of education, digitalization, and workplace learning. It focuses on historical and contemporary transformation processes in educational institutions, as well as the history of learning in working life.
+    </p>
+    <div id="keywords-section" style="margin-top:1.5rem;display:none;">
+      <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.75rem;" class="de">Schlagwörter aus ORCID</p>
+      <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.75rem;" class="en">Keywords from ORCID</p>
+      <div class="keyword-cloud" id="keywords-list"></div>
+    </div>
+  </section>
+
+  <section id="publikationen">
+    <div class="section-label de">Schriften</div>
+    <div class="section-label en">Writings</div>
+    <h2 class="section-heading de">Publikationen</h2>
+    <h2 class="section-heading en">Publications</h2>
+    <div class="pub-filters">
+      <button class="pub-filter active" onclick="filterPubs('all')" data-filter="all">
+        <span class="de">Alle</span><span class="en">All</span>
+      </button>
+      <button class="pub-filter" onclick="filterPubs('book')" data-filter="book">
+        <span class="de">Bücher</span><span class="en">Books</span>
+      </button>
+      <button class="pub-filter" onclick="filterPubs('article')" data-filter="article">
+        <span class="de">Artikel</span><span class="en">Articles</span>
+      </button>
+      <button class="pub-filter" onclick="filterPubs('chapter')" data-filter="chapter">
+        <span class="de">Buchkapitel</span><span class="en">Chapters</span>
+      </button>
+    </div>
+    <div id="publications-list">
+      <div class="skeleton wide"></div>
+      <div class="skeleton medium" style="margin-top:0.8rem"></div>
+      <div class="skeleton wide" style="margin-top:1.5rem"></div>
+      <div class="skeleton narrow" style="margin-top:0.8rem"></div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="section-label de">Erreichbarkeit</div>
+    <div class="section-label en">Get in Touch</div>
+    <h2 class="section-heading de">Kontakt</h2>
+    <h2 class="section-heading en">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-label de">Institution</div>
+        <div class="contact-card-label en">Institution</div>
+        <div class="contact-card-value">Pädagogische Hochschule Zürich<br>Zentrum Bildung und Digitaler Wandel</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label de">E-Mail</div>
+        <div class="contact-card-label en">Email</div>
+        <div class="contact-card-value"><a href="mailto:michael.geiss@phzh.ch">michael.geiss@phzh.ch</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">ORCID</div>
+        <div class="contact-card-value">
+          <a href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener">0000-0002-0809-2427 →</a>
+        </div>
+      </div>
+      <div class="contact-card" id="orcid-urls-card" style="display:none;">
+        <div class="contact-card-label de">Weitere Profile</div>
+        <div class="contact-card-label en">Further Profiles</div>
+        <div class="contact-card-value" id="orcid-urls-list"></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2025 Michael Geiss · Pädagogische Hochschule Zürich ·
+    <span class="de">Daten via</span><span class="en">Data via</span>
+    <a href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener" style="color:inherit;">ORCID API</a>
+  </p>
+</footer>
+
+<script>
+const ORCID_ID = '0000-0002-0809-2427';
+const API      = `https://pub.orcid.org/v3.0/${ORCID_ID}`;
+const HDR      = { 'Accept': 'application/json' };
+
+// ── Language ──
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  localStorage.setItem('lang', lang);
+}
+setLang(localStorage.getItem('lang') || 'de');
+
+// ── Fetch helper ──
+async function get(path) {
+  const r = await fetch(API + path, { headers: HDR });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+function years(start, end) {
+  const s = start?.year?.value;
+  const e = end?.year?.value;
+  if (!s) return '';
+  return e ? `${s}–${e}` : `${s}–`;
+}
+
+// ── Education ──
+async function loadEducation() {
+  const table = document.getElementById('education-table');
+  try {
+    const d = await get('/educations');
+    const items = (d['affiliation-group'] || [])
+      .flatMap(g => g.summaries || [])
+      .map(s => s['education-summary'])
+      .filter(Boolean)
+      .sort((a,b) => {
+        const ay = +(a['end-date']?.year?.value || a['start-date']?.year?.value || 0);
+        const by = +(b['end-date']?.year?.value || b['start-date']?.year?.value || 0);
+        return by - ay;
+      });
+    table.innerHTML = items.length
+      ? items.map(e => `<tr>
+          <td>${years(e['start-date'], e['end-date'])}</td>
+          <td><strong>${e['role-title'] || ''}</strong>
+          <em>${e.organization?.name || ''}${e['department-name'] ? ', ' + e['department-name'] : ''}</em></td>
+        </tr>`).join('')
+      : '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Keine Einträge in ORCID.</td></tr>';
+  } catch {
+    table.innerHTML = '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Konnte nicht geladen werden.</td></tr>';
+  }
+}
+
+// ── Employment ──
+async function loadEmployment() {
+  const table = document.getElementById('employment-table');
+  try {
+    const d = await get('/employments');
+    const items = (d['affiliation-group'] || [])
+      .flatMap(g => g.summaries || [])
+      .map(s => s['employment-summary'])
+      .filter(Boolean)
+      .sort((a,b) => {
+        const ay = a['end-date']?.year?.value || '9999';
+        const by = b['end-date']?.year?.value || '9999';
+        return by - ay;
+      });
+    table.innerHTML = items.length
+      ? items.map(e => `<tr>
+          <td>${years(e['start-date'], e['end-date'])}</td>
+          <td><strong>${e['role-title'] || ''}</strong>
+          <em>${e.organization?.name || ''}${e['department-name'] ? ', ' + e['department-name'] : ''}</em></td>
+        </tr>`).join('')
+      : '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Keine Einträge in ORCID.</td></tr>';
+  } catch {
+    table.innerHTML = '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Konnte nicht geladen werden.</td></tr>';
+  }
+}
+
+// ── Keywords ──
+async function loadKeywords() {
+  try {
+    const d   = await get('/keywords');
+    const kws = (d.keyword || []).map(k => k.content).filter(Boolean);
+    if (!kws.length) return;
+    document.getElementById('keywords-list').innerHTML = kws.map(k => `<span class="keyword">${k}</span>`).join('');
+    document.getElementById('keywords-section').style.display = '';
+  } catch { /* optional */ }
+}
+
+// ── Researcher URLs ──
+async function loadUrls() {
+  try {
+    const d    = await get('/researcher-urls');
+    const urls = d['researcher-url'] || [];
+    if (!urls.length) return;
+    document.getElementById('orcid-urls-list').innerHTML =
+      urls.map(u => `<a href="${u.url?.value}" target="_blank" rel="noopener">${u['url-name'] || u.url?.value} →</a>`).join('<br>');
+    document.getElementById('orcid-urls-card').style.display = '';
+  } catch { /* optional */ }
+}
+
+// ── Publications ──
+const TYPE_MAP = {
+  'book':             { key:'book',    de:'Buch',                 en:'Book' },
+  'edited-book':      { key:'book',    de:'Herausgeberband',      en:'Edited Volume' },
+  'journal-article':  { key:'article', de:'Zeitschriftenartikel', en:'Journal Article' },
+  'book-chapter':     { key:'chapter', de:'Buchkapitel',          en:'Book Chapter' },
+  'conference-paper': { key:'chapter', de:'Konferenzbeitrag',     en:'Conference Paper' },
+  'report':           { key:'article', de:'Bericht',              en:'Report' },
+  'working-paper':    { key:'article', de:'Working Paper',        en:'Working Paper' },
+  'dissertation':     { key:'book',    de:'Dissertation',         en:'Dissertation' },
+};
+
+function mapType(t) {
+  return TYPE_MAP[(t||'').toLowerCase().replace(/_/g,'-')]
+    || { key:'article', de: t||'', en: t||'' };
+}
+
+async function loadPublications() {
+  const listEl = document.getElementById('publications-list');
+  try {
+    const d      = await get('/works');
+    const groups = d.group || [];
+
+    const works = groups
+      .map(g => (g['work-summary'] || []).reduce((b,s) => s.title ? s : b, g['work-summary'][0]))
+      .filter(Boolean)
+      .sort((a,b) => {
+        const ay = +(a['publication-date']?.year?.value || 0);
+        const by = +(b['publication-date']?.year?.value || 0);
+        return by - ay;
+      });
+
+    document.getElementById('pub-count').textContent = works.length;
+
+    if (!works.length) {
+      listEl.innerHTML = '<p style="color:var(--ink-faint);font-style:italic;">Keine Publikationen gefunden.</p>';
+      return;
+    }
+
+    // Group by year
+    const byYear = {};
+    works.forEach(w => {
+      const y = w['publication-date']?.year?.value || 'n.d.';
+      (byYear[y] = byYear[y] || []).push(w);
+    });
+
+    listEl.innerHTML = '';
+    Object.keys(byYear).sort((a,b) => b-a).forEach(year => {
+      const group = document.createElement('div');
+      group.className = 'pub-year-group';
+      group.innerHTML = `<div class="pub-year">${year}</div>`;
+
+      byYear[year].forEach(w => {
+        const title    = w.title?.title?.value || '(Kein Titel)';
+        const typeInfo = mapType(w.type);
+        const doi      = (w['external-ids']?.['external-id'] || []).find(e => e['external-id-type'] === 'doi');
+        const doiUrl   = doi ? `https://doi.org/${doi['external-id-value']}` : null;
+        const titleHtml = doiUrl ? `<a href="${doiUrl}" target="_blank" rel="noopener">${title}</a>` : title;
+        const journal  = w['journal-title']?.value || '';
+
+        const item = document.createElement('div');
+        item.className = 'pub-item';
+        item.dataset.type = typeInfo.key;
+        item.innerHTML = `
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">${titleHtml}</div>
+            ${journal ? `<div class="pub-meta">${journal}</div>` : ''}
+            <span class="pub-type-tag de">${typeInfo.de}</span>
+            <span class="pub-type-tag en">${typeInfo.en}</span>
+          </div>`;
+        group.appendChild(item);
+      });
+      listEl.appendChild(group);
+    });
+  } catch(e) {
+    listEl.innerHTML = `
+      <div style="background:var(--bg-warm);border:1px dashed var(--rule);border-radius:4px;padding:2rem;text-align:center;">
+        <strong style="display:block;font-family:var(--serif);color:var(--ink-light);margin-bottom:.5rem;">
+          Publikationen konnten nicht geladen werden
+        </strong>
+        <span style="font-size:.85rem;color:var(--ink-faint);">
+          Bitte stellen Sie sicher, dass Ihr ORCID-Profil öffentlich sichtbar ist.
+        </span>
+      </div>`;
+  }
+}
+
+// ── Filter ──
+function filterPubs(type) {
+  document.querySelectorAll('.pub-filter').forEach(b => b.classList.toggle('active', b.dataset.filter === type));
+  document.querySelectorAll('.pub-item').forEach(i => { i.style.display = (type === 'all' || i.dataset.type === type) ? '' : 'none'; });
+  document.querySelectorAll('.pub-year-group').forEach(g => {
+    g.style.display = [...g.querySelectorAll('.pub-item')].some(i => i.style.display !== 'none') ? '' : 'none';
+  });
+}
+
+// ── Init ──
+Promise.all([loadEducation(), loadEmployment(), loadKeywords(), loadUrls(), loadPublications()]);
+</script>
 </body>
 </html>
