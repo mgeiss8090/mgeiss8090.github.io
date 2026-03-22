@@ -403,20 +403,30 @@ function years(start, end) {
   return e ? `${s}–${e}` : `${s}–`;
 }
 
-// ── Education ──
+// ── Education + Qualifications ──
 async function loadEducation() {
   const table = document.getElementById('education-table');
   try {
-    const d = await get('/educations');
-    const items = (d['affiliation-group'] || [])
-      .flatMap(g => g.summaries || [])
-      .map(s => s['education-summary'])
-      .filter(Boolean)
-      .sort((a,b) => {
-        const ay = +(a['end-date']?.year?.value || a['start-date']?.year?.value || 0);
-        const by = +(b['end-date']?.year?.value || b['start-date']?.year?.value || 0);
-        return by - ay;
-      });
+    const [dEdu, dQual] = await Promise.all([
+      get('/educations'),
+      get('/qualifications').catch(() => ({ 'affiliation-group': [] }))
+    ]);
+
+    const extract = (data, summaryKey) =>
+      (data['affiliation-group'] || [])
+        .flatMap(g => g.summaries || [])
+        .map(s => s[summaryKey])
+        .filter(Boolean);
+
+    const items = [
+      ...extract(dEdu,  'education-summary'),
+      ...extract(dQual, 'qualification-summary'),
+    ].sort((a,b) => {
+      const ay = +(a['end-date']?.year?.value || a['start-date']?.year?.value || 0);
+      const by = +(b['end-date']?.year?.value || b['start-date']?.year?.value || 0);
+      return by - ay;
+    });
+
     table.innerHTML = items.length
       ? items.map(e => `<tr>
           <td>${years(e['start-date'], e['end-date'])}</td>
