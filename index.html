@@ -232,7 +232,7 @@
     }
   </style>
 </head>
-<body class="lang-de">
+<body class="lang-en">
 
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('de')" id="btn-de">DE</button>
@@ -399,7 +399,7 @@ function setLang(lang) {
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   localStorage.setItem('lang', lang);
 }
-setLang(localStorage.getItem('lang') || 'de');
+setLang(localStorage.getItem('lang') || 'en');
 
 // ── Fetch helper ──
 async function get(path) {
