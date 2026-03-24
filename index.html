@@ -56,8 +56,8 @@
     /* HERO */
     .hero {
       padding: 7.5rem 0 3.5rem;
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 3rem; align-items: end;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; align-items: center;
       border-bottom: 1px solid var(--rule);
     }
     .hero-name {
@@ -348,7 +348,7 @@
             <span class="stat-label en">Publications</span>
           </div>
           <div>
-            <span class="stat-num">${new Date().getFullYear() - 2013}+</span>
+            <span class="stat-num" id="research-years">—</span>
             <span class="stat-label de">Jahre Forschung</span>
             <span class="stat-label en">Years Research</span>
           </div>
@@ -598,6 +598,7 @@ function filterPubs(type) {
 }
 
 // ── Init ──
+document.getElementById('research-years').textContent = (new Date().getFullYear() - 2013) + '+';
 Promise.all([loadEducation(), loadEmployment(), loadKeywords(), loadUrls(), loadPublications()]);
 </script>
 </body>
