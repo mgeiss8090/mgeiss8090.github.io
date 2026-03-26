@@ -229,6 +229,64 @@
       background: var(--bg-warm); color: var(--ink-faint);
     }
 
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .project-card {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg-warm);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--rule);
+    }
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      mix-blend-mode: normal;
+    }
+    .project-body {
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.87rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .project-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .project-link:hover { text-decoration: underline; }
+    
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; margin-top: 0.5rem; }
     .contact-card { background: var(--bg-warm); border: 1px solid var(--rule); border-radius: 4px; padding: 1.2rem 1.4rem; }
@@ -300,6 +358,7 @@
       <li><a href="#vita"><span class="de">Vita</span><span class="en">Vita</span></a></li>
       <li><a href="#forschung"><span class="de">Forschung</span><span class="en">Research</span></a></li>
       <li><a href="#publikationen"><span class="de">Publikationen</span><span class="en">Publications</span></a></li>
+      <li><a href="#projekte"><span class="de">Projekte</span><span class="en">Projects</span></a></li>
       <li><a href="#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a></li>
     </ul>
   </nav>
@@ -368,6 +427,48 @@
     </div>
   </section>
 
+  <section id="projekte">
+  <div class="section-label de">Laufende & abgeschlossene Arbeiten</div>
+  <div class="section-label en">Ongoing & Completed Work</div>
+  <h2 class="section-heading de">Projekte</h2>
+  <h2 class="section-heading en">Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-image">
+        <img src="projekt1.jpg" alt="Projektbild 1">
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Titel des Projekts</h3>
+        <p class="project-desc de">Kurzbeschreibung des Projekts auf Deutsch. Ein paar Sätze über Ziele, Methoden oder Ergebnisse.</p>
+        <p class="project-desc en">Short description of the project in English. A few sentences about goals, methods, or findings.</p>
+        <a class="project-link" href="https://beispiel.ch" target="_blank" rel="noopener">
+          <span class="de">Mehr erfahren →</span>
+          <span class="en">Learn more →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Weiteres Projekt: einfach diesen Block kopieren -->
+    <div class="project-card">
+      <div class="project-image">
+        <img src="projekt2.jpg" alt="Projektbild 2">
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Titel des zweiten Projekts</h3>
+        <p class="project-desc de">Kurzbeschreibung auf Deutsch.</p>
+        <p class="project-desc en">Short description in English.</p>
+        <a class="project-link" href="https://beispiel.ch" target="_blank" rel="noopener">
+          <span class="de">Mehr erfahren →</span>
+          <span class="en">Learn more →</span>
+        </a>
+      </div>
+    </div>
+
+    </div>
+  </section>
+  
   <section id="kontakt">
     <div class="section-label de">Erreichbarkeit</div>
     <div class="section-label en">Get in Touch</div>
