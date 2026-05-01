@@ -137,14 +137,16 @@
       position: sticky; top: 36px; z-index: 90;
       background: rgba(250,249,246,0.95); border-bottom: 1px solid var(--rule);
       backdrop-filter: blur(10px);
+      overflow-x: auto;
     }
-    .site-nav ul { display: flex; list-style: none; }
+    .site-nav ul { display: flex; list-style: none; min-width: max-content; }
     .site-nav a {
       display: block; padding: 0.85rem 1.1rem;
       font-size: 0.76rem; font-weight: 500;
       letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--ink-light); text-decoration: none;
       border-bottom: 2px solid transparent; transition: all 0.2s;
+      white-space: nowrap;
     }
     .site-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
@@ -284,7 +286,7 @@
       letter-spacing: 0.03em;
     }
     .project-link:hover { text-decoration: underline; }
-    
+
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; margin-top: 0.5rem; }
     .contact-card { background: var(--bg-warm); border: 1px solid var(--rule); border-radius: 4px; padding: 1.2rem 1.4rem; }
@@ -314,9 +316,6 @@
     @media (max-width: 640px) {
       .hero { grid-template-columns: 1fr; gap: 1.5rem; }
       .hero-image { display: none; }
-      .hero-image { justify-content: flex-start; }
-      .hero-image img { width: clamp(180px, 70vw, 320px); max-height: 220px; }
-      .site-nav a { padding: 0.7rem 0.65rem; font-size: 0.68rem; }
       .page-wrap { padding: 0 1.2rem; }
       .cv-table td:first-child { width: 90px; }
     }
@@ -433,13 +432,12 @@
 
   <div class="projects-grid">
 
-    <!-- Equipping Schools Project -->
     <div class="project-card">
       <div class="project-image">
         <img src="schule-mit-sprachlabor-0121.jpg" alt="Projektbild 1">
       </div>
       <div class="project-body">
-        <h3 class="project-title">Equipping Schools: The Role of Finance in Shaping Switzerland’s Educational Media Landscapes, 1950–2010</h3>
+        <h3 class="project-title">Equipping Schools: The Role of Finance in Shaping Switzerland's Educational Media Landscapes, 1950–2010</h3>
         <p class="project-desc de">Dieses Forschungsprojekt untersucht systematisch aus historischer Perspektive den Einsatz öffentlicher Mittel zur Ausstattung von Schulen mit neuen Medien.</p>
         <p class="project-desc en">This research project systematically examines the use of public funds to equip schools with media infrastructure from a historical perspective.</p>
         <a class="project-link" href="https://www.equippingschools.ch/" target="_blank" rel="noopener">
@@ -449,7 +447,6 @@
       </div>
     </div>
 
-    <!-- Digital Agenda Project -->
     <div class="project-card">
       <div class="project-image">
         <img src="education-and-technology-image-08-test.jpg" alt="Projektbild 2">
@@ -465,15 +462,14 @@
       </div>
     </div>
 
-    <!-- EPTI Project -->
     <div class="project-card">
       <div class="project-image">
-        <img src="EPTI_test.png" alt="Projektbild 1">
+        <img src="EPTI_test.png" alt="Projektbild 3">
       </div>
       <div class="project-body">
         <h3 class="project-title">Educational Policy Transparency Interface</h3>
         <p class="project-desc de">Mit dem Educational Policy Transparency Interface wird ein Tool entwickelt, das Bildungsdebatten in der Schweiz visualisiert.</p>
-        <p class="project-desc en">The Educational Policy Transparency Interface visualises educational debates in Switzerland. </p>
+        <p class="project-desc en">The Educational Policy Transparency Interface visualises educational debates in Switzerland.</p>
         <a class="project-link" href="https://phzh.ch/en/about-phzh/topics-and-activities/projects/educational-policy-transparency-interface/" target="_blank" rel="noopener">
           <span class="de">Mehr erfahren →</span>
           <span class="en">Learn more →</span>
@@ -481,10 +477,9 @@
       </div>
     </div>
 
-    <!-- PICTS Project -->
     <div class="project-card">
       <div class="project-image">
-        <img src="PICTS-test.png" alt="Projektbild 1">
+        <img src="PICTS-test.png" alt="Projektbild 4">
       </div>
       <div class="project-body">
         <h3 class="project-title">PICTS in einer sich wandelnden digitalen Gesellschaft: Bedürfnisse und Bedarf</h3>
@@ -495,11 +490,11 @@
           <span class="en">Learn more →</span>
         </a>
       </div>
-    
     </div>
-   </div>
+
+  </div>
   </section>
-  
+
   <section id="kontakt">
     <div class="section-label de">Erreichbarkeit</div>
     <div class="section-label en">Get in Touch</div>
@@ -705,7 +700,6 @@ async function loadPublications() {
       return;
     }
 
-    // Group by year
     const byYear = {};
     works.forEach(w => {
       const y = w['publication-date']?.year?.value || 'n.d.';
