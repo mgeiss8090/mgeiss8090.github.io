@@ -212,6 +212,9 @@
     .pub-item[data-type="book"] .pub-bar { background: var(--accent); }
     .pub-item[data-type="article"] .pub-bar { background: var(--accent-warm); }
     .pub-item[data-type="chapter"] .pub-bar { background: var(--accent-green); }
+    .pub-item[data-type="edited"] .pub-bar { background: #6a5acd; }
+    .pub-item[data-type="specialissue"] .pub-bar { background: #b8860b; }
+    .pub-item[data-type="report"] .pub-bar { background: #888; }
     .pub-title {
       font-family: var(--serif); font-style: italic;
       font-size: 0.95rem; color: var(--ink); line-height: 1.45;
@@ -414,6 +417,15 @@
       </button>
       <button class="pub-filter" onclick="filterPubs('chapter')" data-filter="chapter">
         <span class="de">Buchkapitel</span><span class="en">Chapters</span>
+      </button>
+      <button class="pub-filter" onclick="filterPubs('edited')" data-filter="edited">
+        <span class="de">Herausgeberbände</span><span class="en">Edited Volumes</span>
+      </button>
+      <button class="pub-filter" onclick="filterPubs('specialissue')" data-filter="specialissue">
+        <span class="de">Special Issues</span><span class="en">Special Issues</span>
+      </button>
+      <button class="pub-filter" onclick="filterPubs('report')" data-filter="report">
+        <span class="de">Berichte</span><span class="en">Reports</span>
       </button>
     </div>
     <div id="publications-list">
@@ -663,14 +675,15 @@ async function loadUrls() {
 
 // ── Publications ──
 const TYPE_MAP = {
-  'book':             { key:'book',    de:'Buch',                 en:'Book' },
-  'edited-book':      { key:'book',    de:'Herausgeberband',      en:'Edited Volume' },
-  'journal-article':  { key:'article', de:'Zeitschriftenartikel', en:'Journal Article' },
-  'book-chapter':     { key:'chapter', de:'Buchkapitel',          en:'Book Chapter' },
-  'conference-paper': { key:'chapter', de:'Konferenzbeitrag',     en:'Conference Paper' },
-  'report':           { key:'article', de:'Bericht',              en:'Report' },
-  'working-paper':    { key:'article', de:'Working Paper',        en:'Working Paper' },
-  'dissertation':     { key:'book',    de:'Dissertation',         en:'Dissertation' },
+  'book':             { key:'book',         de:'Buch',                    en:'Book' },
+  'edited-book':      { key:'edited',       de:'Herausgeberband',         en:'Edited Volume' },
+  'journal-article':  { key:'article',      de:'Zeitschriftenartikel',    en:'Journal Article' },
+  'journal-issue':    { key:'specialissue', de:'Special Issue',           en:'Special Issue' },
+  'book-chapter':     { key:'chapter',      de:'Buchkapitel',             en:'Book Chapter' },
+  'conference-paper': { key:'chapter',      de:'Konferenzbeitrag',        en:'Conference Paper' },
+  'report':           { key:'report',       de:'Bericht',                 en:'Report' },
+  'working-paper':    { key:'report',       de:'Working Paper',           en:'Working Paper' },
+  'dissertation':     { key:'book',         de:'Dissertation',            en:'Dissertation' },
 };
 
 function mapType(t) {
