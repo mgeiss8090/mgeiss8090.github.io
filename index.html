@@ -215,6 +215,7 @@
     .pub-item[data-type="edited"] .pub-bar { background: #6a5acd; }
     .pub-item[data-type="specialissue"] .pub-bar { background: #b8860b; }
     .pub-item[data-type="report"] .pub-bar { background: #888; }
+    .pub-item[data-type="other"] .pub-bar { background: #b0a090; }
     .pub-title {
       font-family: var(--serif); font-style: italic;
       font-size: 0.95rem; color: var(--ink); line-height: 1.45;
@@ -423,6 +424,9 @@
       </button>
       <button class="pub-filter" onclick="filterPubs('report')" data-filter="report">
         <span class="de">Berichte</span><span class="en">Reports</span>
+      </button>
+      <button class="pub-filter" onclick="filterPubs('other')" data-filter="other">
+        <span class="de">Andere</span><span class="en">Other</span>
       </button>
     </div>
     <div id="publications-list">
@@ -672,20 +676,29 @@ async function loadUrls() {
 
 // ── Publications ──
 const TYPE_MAP = {
-  'book':             { key:'book',         de:'Buch',                    en:'Book' },
-  'edited-book':      { key:'edited',       de:'Herausgeberband',         en:'Edited Volume' },
-  'journal-article':  { key:'article',      de:'Zeitschriftenartikel',    en:'Journal Article' },
-  'journal-issue':    { key:'specialissue', de:'Themenheft',              en:'Special Issue' },
-  'book-chapter':     { key:'chapter',      de:'Buchkapitel',             en:'Book Chapter' },
-  'conference-paper': { key:'chapter',      de:'Konferenzbeitrag',        en:'Conference Paper' },
-  'report':           { key:'report',       de:'Bericht',                 en:'Report' },
-  'working-paper':    { key:'report',       de:'Working Paper',           en:'Working Paper' },
-  'dissertation':     { key:'book',         de:'Dissertation',            en:'Dissertation' },
+  'book':              { key:'book',         de:'Buch',                    en:'Book' },
+  'edited-book':       { key:'edited',       de:'Herausgeberband',         en:'Edited Volume' },
+  'journal-article':   { key:'article',      de:'Zeitschriftenartikel',    en:'Journal Article' },
+  'journal-issue':     { key:'specialissue', de:'Themenheft',              en:'Special Issue' },
+  'book-chapter':      { key:'chapter',      de:'Buchkapitel',             en:'Book Chapter' },
+  'conference-paper':  { key:'chapter',      de:'Konferenzbeitrag',        en:'Conference Paper' },
+  'report':            { key:'report',       de:'Bericht',                 en:'Report' },
+  'working-paper':     { key:'report',       de:'Working Paper',           en:'Working Paper' },
+  'dissertation':      { key:'book',         de:'Dissertation',            en:'Dissertation' },
+  'magazine-article':  { key:'other',        de:'Magazinartikel',          en:'Magazine Article' },
+  'newspaper-article': { key:'other',        de:'Zeitungsartikel',         en:'Newspaper Article' },
+  'book-review':       { key:'other',        de:'Rezension',               en:'Book Review' },
+  'review':            { key:'other',        de:'Rezension',               en:'Review' },
+  'online-resource':   { key:'other',        de:'Online-Ressource',        en:'Online Resource' },
+  'lecture-speech':    { key:'other',        de:'Vortrag',                 en:'Lecture / Speech' },
+  'translation':       { key:'other',        de:'Übersetzung',             en:'Translation' },
+  'other':             { key:'other',        de:'Sonstiges',               en:'Other' },
+  'undefined':         { key:'other',        de:'Sonstiges',               en:'Other' },
 };
 
 function mapType(t) {
   return TYPE_MAP[(t||'').toLowerCase().replace(/_/g,'-')]
-    || { key:'article', de: t||'', en: t||'' };
+    || { key:'other', de: t||'Sonstiges', en: t||'Other' };
 }
 
 async function loadPublications() {
