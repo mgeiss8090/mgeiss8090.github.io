@@ -657,10 +657,8 @@ async function loadFunding() {
       const typeLabel = FUNDING_TYPE_LABELS[typeKey] || FUNDING_TYPE_LABELS['other'];
       const funder    = s.organization?.name || '';
 
-      const extUrl  = detail?.['external-ids']?.['external-id']
-        ?.find(e => e['external-id-url']?.value)
-        ?.['external-id-url']?.value || null;
-      const href = extUrl || `https://orcid.org/${ORCID_ID}`;
+      const extUrl = detail?.url?.value || null;
+      const href   = extUrl || `https://orcid.org/${ORCID_ID}`;
 
       const card = document.createElement('div');
       card.className = 'project-card';
