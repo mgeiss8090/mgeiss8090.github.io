@@ -235,61 +235,62 @@
 
     /* PROJECTS */
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-top: 0.5rem;
-    }
-    .project-card {
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      overflow: hidden;
-      background: var(--bg-warm);
-      display: flex;
-      flex-direction: column;
-    }
-    .project-image {
-      width: 100%;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      background: var(--rule);
-    }
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      mix-blend-mode: normal;
-    }
-    .project-body {
-      padding: 1.2rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .project-title {
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 0.87rem;
-      color: var(--ink-light);
-      line-height: 1.7;
-      flex: 1;
-    }
-    .project-link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-    }
-    .project-link:hover { text-decoration: underline; }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.project-card {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-warm);
+  display: flex;
+  flex-direction: column;
+}
+.project-type-band {
+  width: 100%;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+}
+.project-type-band[data-type="grant"]    { background: var(--accent); }
+.project-type-band[data-type="contract"] { background: var(--accent-warm); }
+.project-type-band[data-type="award"]    { background: var(--accent-green); }
+.project-type-band[data-type="salary"]   { background: #6a5acd; }
+.project-type-band[data-type="other"]    { background: #888; }
+.project-body {
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.project-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+.project-funder {
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  margin-bottom: 0.4rem;
+}
+.project-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+.project-link:hover { text-decoration: underline; }
 
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; margin-top: 0.5rem; }
@@ -438,75 +439,16 @@
   </section>
 
   <section id="projekte">
-  <div class="section-label de">Laufende & abgeschlossene Arbeiten</div>
-  <div class="section-label en">Ongoing & Completed Work</div>
+  <div class="section-label de">Drittmittel & Förderung</div>
+  <div class="section-label en">Funding</div>
   <h2 class="section-heading de">Projekte</h2>
   <h2 class="section-heading en">Projects</h2>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-image">
-        <img src="schule-mit-sprachlabor-0121.jpg" alt="Projektbild 1">
-      </div>
-      <div class="project-body">
-        <h3 class="project-title">Equipping Schools: The Role of Finance in Shaping Switzerland's Educational Media Landscapes, 1950–2010</h3>
-        <p class="project-desc de">Dieses Forschungsprojekt untersucht systematisch aus historischer Perspektive den Einsatz öffentlicher Mittel zur Ausstattung von Schulen mit neuen Medien.</p>
-        <p class="project-desc en">This research project systematically examines the use of public funds to equip schools with media infrastructure from a historical perspective.</p>
-        <a class="project-link" href="https://www.equippingschools.ch/" target="_blank" rel="noopener">
-          <span class="de">Mehr erfahren →</span>
-          <span class="en">Learn more →</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">
-        <img src="education-and-technology-image-08-test.jpg" alt="Projektbild 2">
-      </div>
-      <div class="project-body">
-        <h3 class="project-title">Education and the European Digital Agenda: Switzerland, Germany and Sweden after 1970</h3>
-        <p class="project-desc de">Das Projekt untersuchte, wie die bildungspolitischen Auswirkungen des technologischen Wandels zwischen 1970 und dem Ende des Dotcom-Booms um das Jahr 2000 politisch bewältigt wurden.</p>
-        <p class="project-desc en">The project reconstructed how the educational implications of technological change have been faced politically between 1970 and the end of the dotcom boom around 2000.</p>
-        <a class="project-link" href="https://www.digitalagenda.ch/" target="_blank" rel="noopener">
-          <span class="de">Mehr erfahren →</span>
-          <span class="en">Learn more →</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">
-        <img src="EPTI_test.png" alt="Projektbild 3">
-      </div>
-      <div class="project-body">
-        <h3 class="project-title">Educational Policy Transparency Interface</h3>
-        <p class="project-desc de">Mit dem Educational Policy Transparency Interface wird ein Tool entwickelt, das Bildungsdebatten in der Schweiz visualisiert.</p>
-        <p class="project-desc en">The Educational Policy Transparency Interface visualises educational debates in Switzerland.</p>
-        <a class="project-link" href="https://phzh.ch/en/about-phzh/topics-and-activities/projects/educational-policy-transparency-interface/" target="_blank" rel="noopener">
-          <span class="de">Mehr erfahren →</span>
-          <span class="en">Learn more →</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-image">
-        <img src="PICTS-test.png" alt="Projektbild 4">
-      </div>
-      <div class="project-body">
-        <h3 class="project-title">PICTS in einer sich wandelnden digitalen Gesellschaft: Bedürfnisse und Bedarf</h3>
-        <p class="project-desc de">Das Projekt beschäftigt sich mit den veränderten Tätigkeitsfeldern von Pädagogischen ICT-Supporter:innen (PICTS).</p>
-        <p class="project-desc en">This research project investigates the changed professional conditions for Pedagogical ICT Support staff (PICTS).</p>
-        <a class="project-link" href="https://phzh.ch/ueber-die-phzh/themen-und-taetigkeiten/projekte/picts-in-einer-sich-wandelnden-digitalen-gesellschaft/" target="_blank" rel="noopener">
-          <span class="de">Mehr erfahren →</span>
-          <span class="en">Learn more →</span>
-        </a>
-      </div>
-    </div>
-
+  <div class="projects-grid" id="funding-list">
+    <div class="skeleton wide"></div>
+    <div class="skeleton medium" style="margin-top:0.8rem"></div>
+    <div class="skeleton wide" style="margin-top:1.5rem"></div>
   </div>
-  </section>
+</section>
 
   <section id="kontakt">
     <div class="section-label de">Erreichbarkeit</div>
@@ -674,6 +616,74 @@ async function loadUrls() {
   } catch { /* optional */ }
 }
 
+// ── Funding ──                                         ← NEU AB HIER
+const FUNDING_TYPE_LABELS = {
+  'grant':    { de: 'Grant',        en: 'Grant' },
+  'contract': { de: 'Auftrag',      en: 'Contract' },
+  'award':    { de: 'Auszeichnung', en: 'Award' },
+  'salary':   { de: 'Stipendium',   en: 'Salary' },
+  'other':    { de: 'Sonstiges',    en: 'Other' },
+};
+
+async function loadFunding() {
+  const listEl = document.getElementById('funding-list');
+  try {
+    const d = await get('/fundings');
+    const summaries = (d.group || [])
+      .flatMap(g => g['funding-summary'] || [])
+      .filter(Boolean)
+      .sort((a, b) => {
+        const ay = +(a['end-date']?.year?.value || a['start-date']?.year?.value || 0);
+        const by = +(b['end-date']?.year?.value || b['start-date']?.year?.value || 0);
+        return by - ay;
+      });
+
+    if (!summaries.length) {
+      listEl.innerHTML = '<p style="color:var(--ink-faint);font-style:italic;">Keine Einträge in ORCID.</p>';
+      return;
+    }
+
+    const details = await Promise.all(
+      summaries.map(s =>
+        get(`/funding/${s['put-code']}`).catch(() => null)
+      )
+    );
+
+    listEl.innerHTML = '';
+    summaries.forEach((s, i) => {
+      const detail    = details[i];
+      const title     = s.title?.title?.value || '(Kein Titel)';
+      const typeKey   = (s.type || 'other').toLowerCase();
+      const typeLabel = FUNDING_TYPE_LABELS[typeKey] || FUNDING_TYPE_LABELS['other'];
+      const funder    = s.organization?.name || '';
+
+      const extUrl  = detail?.['external-ids']?.['external-id']
+        ?.find(e => e['external-id-url']?.value)
+        ?.['external-id-url']?.value || null;
+      const href = extUrl || `https://orcid.org/${ORCID_ID}`;
+
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.innerHTML = `
+        <div class="project-type-band" data-type="${typeKey}">
+          <span class="de">${typeLabel.de}</span>
+          <span class="en">${typeLabel.en}</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">${title}</h3>
+          ${funder ? `<div class="project-funder">${funder}</div>` : ''}
+          <a class="project-link" href="${href}" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>`;
+      listEl.appendChild(card);
+    });
+  } catch {
+    listEl.innerHTML = '<p style="color:var(--ink-faint);font-style:italic;">Konnte nicht geladen werden.</p>';
+  }
+}
+
 // ── Publications ──
 const TYPE_MAP = {
   'book':              { key:'book',         de:'Buch',                    en:'Book' },
@@ -782,7 +792,7 @@ function filterPubs(type) {
 
 // ── Init ──
 document.getElementById('research-years').textContent = (new Date().getFullYear() - 2013) + '+';
-Promise.all([loadEducation(), loadEmployment(), loadKeywords(), loadUrls(), loadPublications()]);
+Promise.all([loadEducation(), loadEmployment(), loadKeywords(), loadUrls(), loadPublications(), loadFunding()]);
 </script>
 </body>
 </html>
