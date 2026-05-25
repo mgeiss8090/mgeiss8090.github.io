@@ -179,7 +179,7 @@ for year in sorted(by_year.keys(), key=lambda y: y if y == 'n.d.' else y, revers
         doi_entry = next((e for e in ext_ids if e.get('external-id-type') == 'doi'), None)
         doi_url   = f'https://doi.org/{doi_entry["external-id-value"]}' if doi_entry else None
         title_html = f'<a href="{esc(doi_url)}" target="_blank" rel="noopener">{title}</a>' if doi_url else title
-        journal   = esc(w.get('journal-title', {}).get('value', '') or '')
+        journal = esc((w.get('journal-title') or {}).get('value', '') or '')
         journal_html = f'<div class="pub-meta">{journal}</div>' if journal else ''
         pub_items_html.append(f'''<div class="pub-item" data-type="{esc(type_info["key"])}">
           <div class="pub-bar"></div>
