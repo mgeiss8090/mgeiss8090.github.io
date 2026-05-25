@@ -223,7 +223,7 @@ for s in funding_summaries:
     type_key  = (s.get('type') or 'other').lower()
     type_label = FUNDING_TYPE_LABELS.get(type_key, FUNDING_TYPE_LABELS['other'])
     funder    = esc(s.get('organization', {}).get('name', '') or '')
-    ext_url   = (detail or {}).get('url', {}).get('value') if detail else None
+    ext_url = ((detail or {}).get('url') or {}).get('value') if detail else None
     href      = esc(ext_url or f'https://orcid.org/{ORCID_ID}')
     funder_html = f'<div class="project-funder">{funder}</div>' if funder else ''
     funding_cards_html.append(f'''<div class="project-card">
