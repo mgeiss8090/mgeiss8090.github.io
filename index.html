@@ -121,17 +121,6 @@
       display: block;
     }
 
-    /* SKELETON */
-    .skeleton {
-      background: linear-gradient(90deg, var(--bg-warm) 25%, var(--rule) 50%, var(--bg-warm) 75%);
-      background-size: 200% 100%; animation: shimmer 1.4s infinite;
-      border-radius: 3px; height: 1em; margin: 0.4rem 0;
-    }
-    .skeleton.wide { width: 80%; }
-    .skeleton.medium { width: 55%; }
-    .skeleton.narrow { width: 35%; }
-    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
     /* NAV */
     .site-nav {
       position: sticky; top: 36px; z-index: 90;
@@ -235,62 +224,64 @@
 
     /* PROJECTS */
     .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-}
-.project-card {
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--bg-warm);
-  display: flex;
-  flex-direction: column;
-}
-.project-type-band {
-  padding: 0.55rem 1.4rem;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  border-left: 3px solid var(--rule);
-  background: none;
-}
-.project-type-band[data-type="grant"]    { border-left-color: var(--accent-green); color: var(--accent-green); }
-.project-type-band[data-type="contract"] { border-left-color: #7a9e7e; color: #7a9e7e; }
-.project-type-band[data-type="award"]    { border-left-color: #a0956e; color: #a0956e; }
-.project-type-band[data-type="salary"]   { border-left-color: #7a8e7a; color: #7a8e7a; }
-.project-type-band[data-type="other"]    { border-left-color: #a09080; color: #a09080; }
-.project-body {
-  padding: 1.2rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.project-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  line-height: 1.3;
-}
-.project-funder {
-  font-size: 0.82rem;
-  color: var(--ink-light);
-  margin-bottom: 0.4rem;
-}
-.project-link {
-  display: inline-block;
-  margin-top: 1rem;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--accent);
-  text-decoration: none;
-  letter-spacing: 0.03em;
-}
-.project-link:hover { text-decoration: underline; }
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .project-card {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+    .project-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .project-type-band {
+      padding: 0.55rem 1.4rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      border-left: 3px solid var(--rule);
+      background: none;
+    }
+    .project-type-band[data-type="grant"]    { border-left-color: var(--accent-green); color: var(--accent-green); }
+    .project-type-band[data-type="contract"] { border-left-color: #7a9e7e; color: #7a9e7e; }
+    .project-type-band[data-type="award"]    { border-left-color: #a0956e; color: #a0956e; }
+    .project-type-band[data-type="salary"]   { border-left-color: #7a8e7a; color: #7a8e7a; }
+    .project-type-band[data-type="other"]    { border-left-color: #a09080; color: #a09080; }
+    .project-body {
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .project-funder {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      margin-bottom: 0.4rem;
+    }
+    .project-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .project-link:hover { text-decoration: underline; }
 
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; margin-top: 0.5rem; }
@@ -335,18 +326,6 @@
 
 <div class="page-wrap">
 
-<noscript>
-  <div style="padding:2rem 0;max-width:640px;">
-    <h1>Michael Geiss</h1>
-    <p>Professor of Education · Zurich University of Teacher Education (PHZH)</p>
-    <p>Head of the Centre for Education and Digital Transformation</p>
-    <p>My research lies at the intersection of educational history, technology development, and governance, with a focus on the role of non-state actors in public education.</p>
-    <p>Meine Forschung bewegt sich an der Schnittstelle von Bildungsgeschichte, Technologieentwicklung und Educational Governance. Besonders interessiere ich mich für die Rolle nichtstaatlicher Akteure im Bildungswesen.</p>
-    <p>ORCID: <a href="https://orcid.org/0000-0002-0809-2427">0000-0002-0809-2427</a></p>
-    <p>E-Mail: <a href="mailto:michael.geiss@phzh.ch">michael.geiss@phzh.ch</a></p>
-  </div>
-</noscript>
-
   <header class="hero">
     <div>
       <h1 class="hero-name">Michael Geiss</h1>
@@ -383,16 +362,52 @@
 
     <h2 class="section-heading de">Ausbildung</h2>
     <h2 class="section-heading en">Education</h2>
-    <table class="cv-table" id="education-table">
-      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
-      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
+    <table class="cv-table">
+      <tr>
+          <td>2013–2021</td>
+          <td><strong>Habilitation</strong>
+          <em>University of Zurich, Faculty of Arts and Social Sciences</em></td>
+        </tr>
+<tr>
+          <td>2008–2013</td>
+          <td><strong>Dr. phil.</strong>
+          <em>University of Zurich, Institute of Education</em></td>
+        </tr>
+<tr>
+          <td>2004–2007</td>
+          <td><strong>Master of Arts</strong>
+          <em>University of Zurich, Faculty of Arts and Social Sciences</em></td>
+        </tr>
+<tr>
+          <td>2001–2004</td>
+          <td><strong>Undergraduate Diploma</strong>
+          <em>University of Trier</em></td>
+        </tr>
     </table>
 
     <h2 class="section-heading de" style="margin-top:2.5rem;">Anstellungen</h2>
     <h2 class="section-heading en" style="margin-top:2.5rem;">Employment</h2>
-    <table class="cv-table" id="employment-table">
-      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
-      <tr><td colspan="2"><div class="skeleton wide"></div><div class="skeleton medium"></div></td></tr>
+    <table class="cv-table">
+      <tr>
+          <td>2021–</td>
+          <td><strong>Head of the Centre for Education and Digital Transformation and Professor of Education</strong>
+          <em>Zurich University of Teacher Education, Education Sciences</em></td>
+        </tr>
+<tr>
+          <td>2016–2021</td>
+          <td><strong>Head of the Education and Work Research Unit</strong>
+          <em>Institute of Education, University of Zurich, Institute of Education</em></td>
+        </tr>
+<tr>
+          <td>2013–2015</td>
+          <td><strong>Postdoctoral Researcher and Lecturer</strong>
+          <em>University of Zurich, Institute of Education</em></td>
+        </tr>
+<tr>
+          <td>2008–2013</td>
+          <td><strong>Lecturer and Research Assistant</strong>
+          <em>University of Zurich, Institute of Education</em></td>
+        </tr>
     </table>
   </section>
 
@@ -407,10 +422,10 @@
     <p class="en" style="font-family:var(--serif);font-style:italic;color:var(--ink-light);font-size:1rem;line-height:1.8;max-width:640px;">
       My research lies at the intersection of educational history, technology development, and governance, with a focus on the role of non-state actors in public education.
     </p>
-    <div id="keywords-section" style="margin-top:1.5rem;display:none;">
+    <div id="keywords-section" style="margin-top:1.5rem;">
       <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.75rem;" class="de">Schlagwörter aus ORCID</p>
       <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.75rem;" class="en">Keywords from ORCID</p>
-      <div class="keyword-cloud" id="keywords-list"></div>
+      <div class="keyword-cloud"><span class="keyword">Education</span><span class="keyword">History</span><span class="keyword">Technology</span><span class="keyword">Governance</span></div>
     </div>
   </section>
 
@@ -443,24 +458,973 @@
       </button>
     </div>
     <div id="publications-list">
-      <div class="skeleton wide"></div>
-      <div class="skeleton medium" style="margin-top:0.8rem"></div>
-      <div class="skeleton wide" style="margin-top:1.5rem"></div>
-      <div class="skeleton narrow" style="margin-top:0.8rem"></div>
+      <div class="pub-year-group"><div class="pub-year">2026</div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1080/17439884.2026.2663686" target="_blank" rel="noopener">Transforming methodologies – reconsidering the tools and logics of educational research in the digital era</a></div>
+            <div class="pub-meta">Learning, Media and Technology</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="specialissue">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Transforming methodologies</div>
+            <div class="pub-meta">Learning, Media and Technology</div>
+            <span class="pub-type-tag de">Themenheft</span>
+            <span class="pub-type-tag en">Special Issue</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1016/j.phe.2026.03.004" target="_blank" rel="noopener">Adding a structure to mentoring: Seminar-based supervision in Swedish PhD education</a></div>
+            <div class="pub-meta">Perspective of Higher Education</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.33057/chronos.1534" target="_blank" rel="noopener">Berufsbildung, Konjunktur und Arbeitsmarkt</a></div>
+            <div class="pub-meta">Bildungsgeschichte: Systementwicklung im 19. und 20. Jahrhundert in der deutschsprachigen Schweiz</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2025</div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1080/00309230.2025.2459167" target="_blank" rel="noopener">Funding educational media: public finance and the introduction of audio-visual teaching aids in Zurich, 1960–1990</a></div>
+            <div class="pub-meta">Paedagogica Historica</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.36368/njedh.v12i2.1316" target="_blank" rel="noopener">Special Tools: Educational Technologies for Children and Adults with Disabilities in Switzerland, 1970s to 1990s</a></div>
+            <div class="pub-meta">Nordic Journal of Educational History</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2024</div>
+<div class="pub-item" data-type="report">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.5281/zenodo.14040396" target="_blank" rel="noopener">Die lokale Schulbehörde im digitalen Wandel: eine explorative Studie</a></div>
+            
+            <span class="pub-type-tag de">Bericht</span>
+            <span class="pub-type-tag en">Report</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="specialissue">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1177/0034523724125870" target="_blank" rel="noopener">Intermediaries</a></div>
+            <div class="pub-meta">Research in Education</div>
+            <span class="pub-type-tag de">Themenheft</span>
+            <span class="pub-type-tag en">Special Issue</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1108/her-02-2024-0008" target="_blank" rel="noopener">A better use of the shoulders we stand on: meta-analyses in the history of education</a></div>
+            <div class="pub-meta">History of Education Review</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1080/00309230.2024.2409429" target="_blank" rel="noopener">Making a case for computer literacy: the German Informatics Society and the emerging field of computer education, late 1960s–early 1990s</a></div>
+            <div class="pub-meta">Paedagogica Historica</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1177/00345237241258700" target="_blank" rel="noopener">Intermediaries and the digital transformation of schooling: An introduction</a></div>
+            <div class="pub-meta">Research in Education</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1177/00345237241242989" target="_blank" rel="noopener">Working at the frontier: Swiss educational information and communication technology coordinators as mediators and intermediaries of the digital transformation</a></div>
+            <div class="pub-meta">Research in Education</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2023</div>
+<div class="pub-item" data-type="book">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.33057/chronos.1713" target="_blank" rel="noopener">Das Kapital der Bildung. Pädagogische Ambitionen in der Schweizer Privatwirtschaft im 20. Jahrhundert</a></div>
+            
+            <span class="pub-type-tag de">Buch</span>
+            <span class="pub-type-tag en">Book</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.32376/d895a0ea.6e09b010" target="_blank" rel="noopener">From Victims to Economic Assets: Training Women in an Emerging Digital Society During the Late 1970s to the Mid-1990s</a></div>
+            <div class="pub-meta">History of Media Studies</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.3262/zp2304405" target="_blank" rel="noopener">„pädagogisch“: Historische Erkundungen einer mächtigen modernen Semantik (Einleitung in den Thementeil)</a></div>
+            <div class="pub-meta">Zeitschrift für Pädagogik</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1515/9783110780147-007" target="_blank" rel="noopener">Computer Education in Switzerland: Politics and Markets in a Highly Decentralized Country</a></div>
+            <div class="pub-meta">How Computers Entered the Classroom, 1960–2000</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1515/9783110780147-001" target="_blank" rel="noopener">Computers in Europe’s Classrooms: An Introduction</a></div>
+            <div class="pub-meta">How Computers Entered the Classroom, 1960–2000</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="book">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1515/9783110780147" target="_blank" rel="noopener">How Computers Entered the Classroom, 1960–2000: Historical Perspectives</a></div>
+            
+            <span class="pub-type-tag de">Buch</span>
+            <span class="pub-type-tag en">Book</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.36368/njedh.v10i1.308" target="_blank" rel="noopener">Educational Devices: Debates and Endeavours within the Swiss Teachers’ Association SLV, 1950–1980</a></div>
+            <div class="pub-meta">Nordic Journal of Educational History</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2022</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Watters, Audrey: Teaching Machines. The History of Personalized Learning</div>
+            
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.5281/zenodo.7944411" target="_blank" rel="noopener">Der Pakt mit dem Computer</a></div>
+            
+            <span class="pub-type-tag de">Magazinartikel</span>
+            <span class="pub-type-tag en">Magazine Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="report">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.5281/zenodo.7385329" target="_blank" rel="noopener">PICTS in einer sich wandelnden digitalen Gesellschaft</a></div>
+            
+            <span class="pub-type-tag de">Bericht</span>
+            <span class="pub-type-tag en">Report</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2021</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Das Schweigen der Erwachsenen</div>
+            <div class="pub-meta">Erwachsenenbildung</div>
+            <span class="pub-type-tag de">Magazinartikel</span>
+            <span class="pub-type-tag en">Magazine Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="report">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.5281/zenodo.10256970" target="_blank" rel="noopener">Gymnasiale Bildung in der digitalen Gesellschaft</a></div>
+            
+            <span class="pub-type-tag de">Bericht</span>
+            <span class="pub-type-tag en">Report</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1007/978-3-658-32682-1_5" target="_blank" rel="noopener">Trade Unions, Digital Technologies and the Skill Question in Switzerland</a></div>
+            <div class="pub-meta">Transformationen von Arbeit, Beruf und Bildung in internationaler Betrachtung</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2020</div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1177/1474904120980973" target="_blank" rel="noopener">Building the technological European Community through education: European mobility and training programmes in the 1980s</a></div>
+            <div class="pub-meta">European Educational Research Journal</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Wettstein, Emil: Berufsbildung: Entwicklung des Schweizer Systems</div>
+            
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1080/16544951.2020.1816016" target="_blank" rel="noopener">What can be achieved through education at all? A response to Julian Culp</a></div>
+            <div class="pub-meta">Ethics &amp; Global Politics</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1007/s40955-020-00157-0" target="_blank" rel="noopener">In steady search for optimization: the role of public and private actors in Switzerland's political economy of adult education</a></div>
+            <div class="pub-meta">Zeitschrift für Weiterbildungsforschung</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1177/1474904120909652" target="_blank" rel="noopener">Why do training regimes for early childhood professionals differ? Sweden and Switzerland compared</a></div>
+            <div class="pub-meta">European Educational Research Journal</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="report">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Das Weiterbildungsangebot für Lehrpersonen im ersten Zyklus: Potenziale und Herausforderungen bei der Planung und Entwicklung aus Schulleitungssicht</div>
+            
+            <span class="pub-type-tag de">Bericht</span>
+            <span class="pub-type-tag en">Report</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="specialissue">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.25656/01:25001" target="_blank" rel="noopener">Konservatismus und Pädagogik im Europa des 20. Jahrhunderts</a></div>
+            <div class="pub-meta">Jahrbuch für Historische Bildungsforschung</div>
+            <span class="pub-type-tag de">Themenheft</span>
+            <span class="pub-type-tag en">Special Issue</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Konservatismus und Pädagogik im Europa des 20. Jahrhunderts: Einleitung in den Themenschwerpunkt</div>
+            <div class="pub-meta">Jahrbuch für Historische Bildungsforschung</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="report">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Weiterbildung im Bereich der familien- und schulergänzenden Kinderbetreuung: Angebote und Bedürfnisse / La formation continue dans le domaine de l'accueil de jour extrafamilial et parascolaire: Offres et besoins</div>
+            
+            <span class="pub-type-tag de">Bericht</span>
+            <span class="pub-type-tag en">Report</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2019</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Es lebe der Flickenteppich</div>
+            <div class="pub-meta">Frankfurter Allgemeine Zeitung</div>
+            <span class="pub-type-tag de">Zeitungsartikel</span>
+            <span class="pub-type-tag en">Newspaper Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Berufliche Weiterbildung im Feld der familien- und schulergänzenden Kinderbetreuung</div>
+            <div class="pub-meta">Education Permanente</div>
+            <span class="pub-type-tag de">Magazinartikel</span>
+            <span class="pub-type-tag en">Magazine Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title"><a href="https://doi.org/10.1007/978-3-476-04745-8" target="_blank" rel="noopener">Bildung, Schule und Staat in der liberalen Demokratie</a></div>
+            <div class="pub-meta">Handbuch Philosophie der Kindheit</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Liberalismus</div>
+            <div class="pub-meta">Handbuch Bildungs- und Erziehungsphilosophie</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2018</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Der tägliche Kampf ums Lernen</div>
+            <div class="pub-meta">Education Permanente</div>
+            <span class="pub-type-tag de">Magazinartikel</span>
+            <span class="pub-type-tag en">Magazine Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Technologiepolitik und die Ordnung der beruflichen Weiterbildung</div>
+            <div class="pub-meta">Schule und Reform: Veränderungsabsichten, Wandel und Folgeprobleme</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Zeitdiagnostik und die Altlasten der Bildungsexpansion</div>
+            <div class="pub-meta">Zeitschrift für Pädagogik</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2017</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Der Betrieb als Ressource – der Betrieb als Barriere</div>
+            <div class="pub-meta">Education Permanente</div>
+            <span class="pub-type-tag de">Magazinartikel</span>
+            <span class="pub-type-tag en">Magazine Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Die Fortbildung von Lehrpersonen seit der Bildungsexpansion: das Beispiel des Kantons Zürich</div>
+            <div class="pub-meta">Beiträge zur Lehrerinnen- und Lehrerbildung</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Die Politik des lebenslangen Lernens in Europa nach dem Boom</div>
+            <div class="pub-meta">Zeitschrift für Weiterbildungsforschung</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Leonard, Thomas C.: Illiberal reformers: race, eugenics &amp; American economics in the progressive era</div>
+            <div class="pub-meta">Bildungsgeschichte: International Journal for the Historiography of Education</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2016</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Berufsbildung und Migration. Die Erfahrungen nutzen</div>
+            
+            <span class="pub-type-tag de">Zeitungsartikel</span>
+            <span class="pub-type-tag en">Newspaper Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Doing It for Them: Corporatism and Apprentice Activism in Switzerland, 1880-1950</div>
+            <div class="pub-meta">History of Education</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Erosion einer Erzählung: Militär und Gesellschaft in der Jugendpublizistik nach 1945</div>
+            <div class="pub-meta">Pulverdampf und Kreidestaub: Beiträge zum Verhältnis zwischen Militär und Schule in der Schweiz im 19. und 20. Jahrhundert</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Häfeli, Kurt; Neuenschwander, Markus P.; Schumann, Stephan (Hrsg.): Berufliche Passagen im Lebenslauf</div>
+            <div class="pub-meta">Schweizerische Zeitschrift für Bildungswissenschaften</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Sanfter Etatismus. Weiterbildungspolitik in der Schweiz</div>
+            <div class="pub-meta">Staatlichkeit in der Schweiz: Regieren und Verwalten vor der neoliberalen Wende</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="specialissue">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">The Backbone of Schooling: Entangled Histories of Funding and Educational Administration</div>
+            
+            <span class="pub-type-tag de">Themenheft</span>
+            <span class="pub-type-tag en">Special Issue</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">The Backbone of Schooling: Entangled Histories of Funding and Educational Administration (Introduction)</div>
+            <div class="pub-meta">Paedagogica Historica</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">There Is No Outside to the System. Paternalism and Protest in Swiss Vocational Education and Training, 1950-1980</div>
+            <div class="pub-meta">History of Vocational Education and Training in Europe: cases, concepts and challenges</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2015</div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Bringing education back in: international perspectives on the relationship between state, culture and society</div>
+            <div class="pub-meta">Education and the State: International Perspectives on a Changing Relationship</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Der Bildungsökonom</div>
+            <div class="pub-meta">Das Personal der Postmoderne. Eine Inventur</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="book">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Education and the State: International Perspectives on a Changing Relationship</div>
+            
+            <span class="pub-type-tag de">Buch</span>
+            <span class="pub-type-tag en">Book</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">To Write Like a Bureaucrat: Educational Administration as a Cultural Phenomenon</div>
+            <div class="pub-meta">Education and the State: International Perspectives on a Changing Relationship</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Vom Problem, einen Sachverhalt (erziehungswissenschaftlich) nicht bezeichnen zu können</div>
+            <div class="pub-meta">Zum Schweigen: Macht/Ohnmacht in Erziehung und Bildung</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="book">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Zum Schweigen: Macht/Ohnmacht in Erziehung und Bildung</div>
+            
+            <span class="pub-type-tag de">Buch</span>
+            <span class="pub-type-tag en">Book</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Zur Macht der Ambivalenz: Schweigen in Erziehung und Bildung</div>
+            <div class="pub-meta">Zum Schweigen: Macht/Ohnmacht in Erziehung und Bildung</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2014</div>
+<div class="pub-item" data-type="book">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Der Pädagogenstaat: Behördenkommunikation und Organisationspraxis in der badischen Unterrichtsverwaltung, 1860-1912</div>
+            
+            <span class="pub-type-tag de">Buch</span>
+            <span class="pub-type-tag en">Book</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Die angemessene Form: Abstraktion und die Suche nach einem pädagogischen Kalkül</div>
+            <div class="pub-meta">Zeitschrift für Pädagogik</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Stedman Jones, Daniel: Masters of the Universe: Hayek, Friedman, and the Birth of Neoliberal Politics</div>
+            <div class="pub-meta">Vierteljahrsschrift für wissenschaftliche Pädagogik</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2013</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Skinner, Quentin: Die drei Körper des Staates. Göttingen: Wallstein-Verlag, 2012</div>
+            <div class="pub-meta">Vierteljahrschrift für wissenschaftliche Pädagogik</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2012</div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Das Erziehungssystem der Gesellschaft</div>
+            <div class="pub-meta">Luhmann-Handbuch: Leben - Werk - Wirkung</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Die Verwaltung der Dinge: einige Überlegungen zur pädagogischen Geschichtsschreibung</div>
+            <div class="pub-meta">Zeitschrift für Pädagogik</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Einleitung - Verwaltete Schule: Geschichte und Gegenwart</div>
+            <div class="pub-meta">Verwaltete Schule: Geschichte und Gegenwart</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Opportunismus der Kommunikation: die Einheit der Bildungsverwaltung als methodisches Problem</div>
+            <div class="pub-meta">Verwaltete Schule : Geschichte und Gegenwart</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="book">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Positionierungen: zum Verhältnis von Wissenschaft, Pädagogik und Politik</div>
+            
+            <span class="pub-type-tag de">Buch</span>
+            <span class="pub-type-tag en">Book</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="book">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Verwaltete Schule: Geschichte und Gegenwart</div>
+            
+            <span class="pub-type-tag de">Buch</span>
+            <span class="pub-type-tag en">Book</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Von der Uneinheitlichkeit erziehungswissenschaftlichen Sprechens</div>
+            <div class="pub-meta">Positionierungen: zum Verhältnis von Wissenschaft, Pädagogik und Politik</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2011</div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Das Sprachlabor – Steuerung und Sabotage eines Unterrichtsmittels im Kanton Zürich, 1963–1976</div>
+            <div class="pub-meta">Jahrbuch für Historische Bildungsforschung</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Dekker, Jeroen J. H.: Educational ambitions in history</div>
+            <div class="pub-meta">Vierteljahrsschrift für wissenschaftliche Pädagogik</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Krosigk, Rüdiger von: Bürger in die Verwaltung! and Maciejewski, Jürgen: Amtmannsvertreibungen in Baden</div>
+            <div class="pub-meta">Bildungsgeschichte: International Journal for the Historiography of Education</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2010</div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Die Leiche im Schulhaus. Amtlicher Schriftverkehr als Quelle für eine Kulturgeschichte der Bildungsverwaltung</div>
+            <div class="pub-meta">Zeitschrift für pädagogische Historiographie</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Labaree, David F.: Education, markets and the public good</div>
+            <div class="pub-meta">Zeitschrift für Pädagogik</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Luhmann, Niklas: Politische Soziologie, hrsg. v. André Kieserling</div>
+            <div class="pub-meta">Vierteljahrsschrift für wissenschaftliche Pädagogik</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2009</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Tenorth, Heinz-Elmar et al. (Hrsg.): Friedrich Siegmund-Schultze (1885–1969)</div>
+            <div class="pub-meta">Zeitschrift für pädagogische Historiographie</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Rezeptionsjubiläen. Pädagogen, Pragmatisten und andere Freunde Darwins</div>
+            <div class="pub-meta">Vierteljahrsschrift für wissenschaftliche Pädagogik</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="chapter">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Warum aber Psychologie? Die Theorie des Sozialen im Chicagoer Pragmatismus</div>
+            <div class="pub-meta">Das Soziale in der Pädagogik</div>
+            <span class="pub-type-tag de">Buchkapitel</span>
+            <span class="pub-type-tag en">Book Chapter</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2008</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Süßmann, Johannes; Scholz, Susanne; Engel, Gisela (Hrsg.): Fallstudien. Theorie – Geschichte – Methode</div>
+            
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2007</div>
+<div class="pub-item" data-type="article">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Dewey, Darwin und die menschliche Seele. Rezeptionen der Evolutionstheorie im frühen amerikanischen Pragmatismus</div>
+            <div class="pub-meta">Zeitschrift für pädagogische Historiographie</div>
+            <span class="pub-type-tag de">Zeitschriftenartikel</span>
+            <span class="pub-type-tag en">Journal Article</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Stefan Haas: Die Kultur der Verwaltung. Die Umsetzung der preußischen Reformen 1800–1848</div>
+            <div class="pub-meta">Zeitschrift für pädagogische Historiographie</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
+<div class="pub-year-group"><div class="pub-year">2006</div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Charles Marsh: The Beloved Community. How Faith Shapes Social Justice, from the Civil Rights Movement to Today</div>
+            <div class="pub-meta">Zeitschrift für pädagogische Historiographie</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Hildegard Stratmann: Lehrer werden. Berufliche Sozialisation in der Volksschullehrer-Ausbildung in Westfalen (1870–1914)</div>
+            
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+<div class="pub-item" data-type="other">
+          <div class="pub-bar"></div>
+          <div>
+            <div class="pub-title">Review of Robert Wuthnow: Saving America? Faith-based Services and the Future of Civil Society</div>
+            <div class="pub-meta">Zeitschrift für pädagogische Historiographie</div>
+            <span class="pub-type-tag de">Sonstiges</span>
+            <span class="pub-type-tag en">Other</span>
+          </div>
+        </div>
+</div>
     </div>
   </section>
 
   <section id="projekte">
-  <div class="section-label de">Drittmittel & Förderung</div>
-  <div class="section-label en">Funding</div>
-  <h2 class="section-heading de">Projekte</h2>
-  <h2 class="section-heading en">Projects</h2>
-  <div class="projects-grid" id="funding-list">
-    <div class="skeleton wide"></div>
-    <div class="skeleton medium" style="margin-top:0.8rem"></div>
-    <div class="skeleton wide" style="margin-top:1.5rem"></div>
-  </div>
-</section>
+    <div class="section-label de">Drittmittel &amp; Förderung</div>
+    <div class="section-label en">Funding</div>
+    <h2 class="section-heading de">Projekte</h2>
+    <h2 class="section-heading en">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-type-band" data-type="grant">
+          <span class="de">Grant</span>
+          <span class="en">Grant</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Equipping Schools: The Role of Finance in Shaping Switzerland’s Educational Media Landscapes, 1950-2010</h3>
+          <div class="project-funder">Swiss National Science Foundation</div>
+          <a class="project-link" href="https://app.dimensions.ai/details/grant/grant.14357631" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="grant">
+          <span class="de">Grant</span>
+          <span class="en">Grant</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Educational Policy Transparency Interface (EPTI)</h3>
+          <div class="project-funder">DIZH</div>
+          <a class="project-link" href="https://phzh.ch/en/about-phzh/topics-and-activities/projects/educational-policy-transparency-interface/" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="grant">
+          <span class="de">Grant</span>
+          <span class="en">Grant</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Towards a Voice-based Chatbot for Language Learners (ChaLL)</h3>
+          <div class="project-funder">Innosuisse – Swiss Innovation Agency</div>
+          <a class="project-link" href="https://phzh.ch/en/about-phzh/topics-and-activities/projects/towards-a-voice-based-chatbot-for-language-learners/" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="contract">
+          <span class="de">Auftrag</span>
+          <span class="en">Contract</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Feasibility study: Automated Education Monitoring Switzerland (AEMS)</h3>
+          <div class="project-funder">Jacobs Foundation</div>
+          <a class="project-link" href="https://phzh.ch/en/about-phzh/topics-and-activities/projects/feasibility-study-automated-education-monitoring-switzerland/" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="grant">
+          <span class="de">Grant</span>
+          <span class="en">Grant</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Education and the European Digital Agenda: Switzerland, Germany and Sweden after 1970</h3>
+          <div class="project-funder">Swiss National Science Foundation</div>
+          <a class="project-link" href="https://app.dimensions.ai/details/grant/grant.8385645" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="grant">
+          <span class="de">Grant</span>
+          <span class="en">Grant</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Reforms in Education: A European Research Network</h3>
+          <div class="project-funder">Swedish Research Council</div>
+          <a class="project-link" href="https://app.dimensions.ai/details/grant/grant.8834795" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="contract">
+          <span class="de">Auftrag</span>
+          <span class="en">Contract</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">PICTS in an Evolving Digital Society</h3>
+          <div class="project-funder">Canton of Zurich</div>
+          <a class="project-link" href="https://phzh.ch/en/about-phzh/topics-and-activities/projects/picts-in-an-evolving-digital-society/" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="grant">
+          <span class="de">Grant</span>
+          <span class="en">Grant</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Technology in Schools: An exploratory project on teacher roles when new teaching tools are introduced to the classroom</h3>
+          <div class="project-funder">Stiftung Pestalozzianum</div>
+          <a class="project-link" href="https://phzh.ch/en/about-phzh/topics-and-activities/projects/technology-at-school/" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="contract">
+          <span class="de">Auftrag</span>
+          <span class="en">Contract</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Die Weiterbildung im Bereich der familien- und schulergänzenden Kinderbetreuung in der Schweiz: Angebote und Bedürfnisse</h3>
+          <div class="project-funder">Jacobs Foundation</div>
+          <a class="project-link" href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+<div class="project-card">
+        <div class="project-type-band" data-type="salary-award">
+          <span class="de">Sonstiges</span>
+          <span class="en">Other</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Die Schule der Verwaltung. Aufsicht und Administration der badischen Volksschule, 1860-1911</h3>
+          <div class="project-funder">Forschungskredit der Universität Zürich</div>
+          <a class="project-link" href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener">
+            <span class="de">Mehr erfahren →</span>
+            <span class="en">Read more →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="kontakt">
     <div class="section-label de">Erreichbarkeit</div>
@@ -471,12 +1435,12 @@
       <div class="contact-card contact-card--stats">
         <div class="stats-row">
           <div>
-            <span class="stat-num" id="pub-count">—</span>
+            <span class="stat-num">86</span>
             <span class="stat-label de">Publikationen</span>
             <span class="stat-label en">Publications</span>
           </div>
           <div>
-            <span class="stat-num" id="research-years">—</span>
+            <span class="stat-num">13+</span>
             <span class="stat-label de">Jahre Forschung</span>
             <span class="stat-label en">Years Research</span>
           </div>
@@ -498,10 +1462,10 @@
           <a href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener">0000-0002-0809-2427 →</a>
         </div>
       </div>
-      <div class="contact-card" id="orcid-urls-card" style="display:none;">
+      <div class="contact-card" style="">
         <div class="contact-card-label de">Weitere Profile</div>
         <div class="contact-card-label en">Further Profiles</div>
-        <div class="contact-card-value" id="orcid-urls-list"></div>
+        <div class="contact-card-value"><a href="https://phzh.ch/ueber-die-phzh/organisation/personen/mitarbeitendenportraet/?username=michael.geiss" target="_blank" rel="noopener">PHZH →</a><br><a href="http://www.digitalagenda.ch" target="_blank" rel="noopener">Education and the European Digital Agenda →</a><br><a href="http://www.equippingschools.ch" target="_blank" rel="noopener">Equipping Schools →</a><br><a href="https://mgeiss8090.github.io/" target="_blank" rel="noopener">Personal Website →</a><br><a href="https://www.linkedin.com/in/michael-geiss-18708a2b5/" target="_blank" rel="noopener">LinkedIn Profile →</a><br><a href="https://bsky.app/profile/michaelgeiss.bsky.social" target="_blank" rel="noopener">Bluesky →</a></div>
       </div>
     </div>
   </section>
@@ -512,15 +1476,11 @@
   <p>© 2026 Michael Geiss · michael.geiss@phzh.ch ·
     <span class="de">Daten via</span><span class="en">Data via</span>
     <a href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener" style="color:inherit;">ORCID API</a>
+    · <span style="color:var(--ink-faint);">Built 2026-05-25 18:53 UTC</span>
   </p>
 </footer>
 
 <script>
-const ORCID_ID = '0000-0002-0809-2427';
-const API      = `https://pub.orcid.org/v3.0/${ORCID_ID}`;
-const HDR      = { 'Accept': 'application/json' };
-
-// ── Language ──
 function setLang(lang) {
   document.body.className = 'lang-' + lang;
   document.getElementById('btn-de').classList.toggle('active', lang === 'de');
@@ -529,269 +1489,6 @@ function setLang(lang) {
 }
 setLang(localStorage.getItem('lang') || 'en');
 
-// ── Fetch helper ──
-async function get(path) {
-  const r = await fetch(API + path, { headers: HDR });
-  if (!r.ok) throw new Error(r.status);
-  return r.json();
-}
-
-function years(start, end) {
-  const s = start?.year?.value;
-  const e = end?.year?.value;
-  if (!s) return '';
-  return e ? `${s}–${e}` : `${s}–`;
-}
-
-// ── Education + Qualifications ──
-async function loadEducation() {
-  const table = document.getElementById('education-table');
-  try {
-    const [dEdu, dQual] = await Promise.all([
-      get('/educations'),
-      get('/qualifications').catch(() => ({ 'affiliation-group': [] }))
-    ]);
-
-    const extract = (data, summaryKey) =>
-      (data['affiliation-group'] || [])
-        .flatMap(g => g.summaries || [])
-        .map(s => s[summaryKey])
-        .filter(Boolean);
-
-    const items = [
-      ...extract(dEdu,  'education-summary'),
-      ...extract(dQual, 'qualification-summary'),
-    ].sort((a,b) => {
-      const ay = +(a['end-date']?.year?.value || a['start-date']?.year?.value || 0);
-      const by = +(b['end-date']?.year?.value || b['start-date']?.year?.value || 0);
-      return by - ay;
-    });
-
-    table.innerHTML = items.length
-      ? items.map(e => `<tr>
-          <td>${years(e['start-date'], e['end-date'])}</td>
-          <td><strong>${e['role-title'] || ''}</strong>
-          <em>${e.organization?.name || ''}${e['department-name'] ? ', ' + e['department-name'] : ''}</em></td>
-        </tr>`).join('')
-      : '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Keine Einträge in ORCID.</td></tr>';
-  } catch {
-    table.innerHTML = '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Konnte nicht geladen werden.</td></tr>';
-  }
-}
-
-// ── Employment ──
-async function loadEmployment() {
-  const table = document.getElementById('employment-table');
-  try {
-    const d = await get('/employments');
-    const items = (d['affiliation-group'] || [])
-      .flatMap(g => g.summaries || [])
-      .map(s => s['employment-summary'])
-      .filter(Boolean)
-      .sort((a,b) => {
-        const ay = a['end-date']?.year?.value || '9999';
-        const by = b['end-date']?.year?.value || '9999';
-        return by - ay;
-      });
-    table.innerHTML = items.length
-      ? items.map(e => `<tr>
-          <td>${years(e['start-date'], e['end-date'])}</td>
-          <td><strong>${e['role-title'] || ''}</strong>
-          <em>${e.organization?.name || ''}${e['department-name'] ? ', ' + e['department-name'] : ''}</em></td>
-        </tr>`).join('')
-      : '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Keine Einträge in ORCID.</td></tr>';
-  } catch {
-    table.innerHTML = '<tr><td colspan="2" style="color:var(--ink-faint);padding:1rem 0;font-size:.85rem;">Konnte nicht geladen werden.</td></tr>';
-  }
-}
-
-// ── Keywords ──
-async function loadKeywords() {
-  try {
-    const d   = await get('/keywords');
-    const kws = (d.keyword || []).map(k => k.content).filter(Boolean);
-    if (!kws.length) return;
-    document.getElementById('keywords-list').innerHTML = kws.map(k => `<span class="keyword">${k}</span>`).join('');
-    document.getElementById('keywords-section').style.display = '';
-  } catch { /* optional */ }
-}
-
-// ── Researcher URLs ──
-async function loadUrls() {
-  try {
-    const d    = await get('/researcher-urls');
-    const urls = d['researcher-url'] || [];
-    if (!urls.length) return;
-    document.getElementById('orcid-urls-list').innerHTML =
-      urls.map(u => `<a href="${u.url?.value}" target="_blank" rel="noopener">${u['url-name'] || u.url?.value} →</a>`).join('<br>');
-    document.getElementById('orcid-urls-card').style.display = '';
-  } catch { /* optional */ }
-}
-
-// ── Funding ──                                         ← NEU AB HIER
-const FUNDING_TYPE_LABELS = {
-  'grant':    { de: 'Grant',        en: 'Grant' },
-  'contract': { de: 'Auftrag',      en: 'Contract' },
-  'award':    { de: 'Auszeichnung', en: 'Award' },
-  'salary':   { de: 'Stipendium',   en: 'Salary' },
-  'other':    { de: 'Sonstiges',    en: 'Other' },
-};
-
-async function loadFunding() {
-  const listEl = document.getElementById('funding-list');
-  try {
-    const d = await get('/fundings');
-    const summaries = (d.group || [])
-      .flatMap(g => g['funding-summary'] || [])
-      .filter(Boolean)
-      .sort((a, b) => {
-        const ay = +(a['end-date']?.year?.value || a['start-date']?.year?.value || 0);
-        const by = +(b['end-date']?.year?.value || b['start-date']?.year?.value || 0);
-        return by - ay;
-      });
-
-    if (!summaries.length) {
-      listEl.innerHTML = '<p style="color:var(--ink-faint);font-style:italic;">Keine Einträge in ORCID.</p>';
-      return;
-    }
-
-    const details = await Promise.all(
-      summaries.map(s =>
-        get(`/funding/${s['put-code']}`).catch(() => null)
-      )
-    );
-
-    listEl.innerHTML = '';
-    summaries.forEach((s, i) => {
-      const detail    = details[i];
-      const title     = s.title?.title?.value || '(Kein Titel)';
-      const typeKey   = (s.type || 'other').toLowerCase();
-      const typeLabel = FUNDING_TYPE_LABELS[typeKey] || FUNDING_TYPE_LABELS['other'];
-      const funder    = s.organization?.name || '';
-
-      const extUrl = detail?.url?.value || null;
-      const href   = extUrl || `https://orcid.org/${ORCID_ID}`;
-
-      const card = document.createElement('div');
-      card.className = 'project-card';
-      card.innerHTML = `
-        <div class="project-type-band" data-type="${typeKey}">
-          <span class="de">${typeLabel.de}</span>
-          <span class="en">${typeLabel.en}</span>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">${title}</h3>
-          ${funder ? `<div class="project-funder">${funder}</div>` : ''}
-          <a class="project-link" href="${href}" target="_blank" rel="noopener">
-            <span class="de">Mehr erfahren →</span>
-            <span class="en">Read more →</span>
-          </a>
-        </div>`;
-      listEl.appendChild(card);
-    });
-  } catch {
-    listEl.innerHTML = '<p style="color:var(--ink-faint);font-style:italic;">Konnte nicht geladen werden.</p>';
-  }
-}
-
-// ── Publications ──
-const TYPE_MAP = {
-  'book':              { key:'book',         de:'Buch',                    en:'Book' },
-  'edited-book':       { key:'edited',       de:'Herausgeberband',         en:'Edited Volume' },
-  'journal-article':   { key:'article',      de:'Zeitschriftenartikel',    en:'Journal Article' },
-  'journal-issue':     { key:'specialissue', de:'Themenheft',              en:'Special Issue' },
-  'book-chapter':      { key:'chapter',      de:'Buchkapitel',             en:'Book Chapter' },
-  'conference-paper':  { key:'chapter',      de:'Konferenzbeitrag',        en:'Conference Paper' },
-  'report':            { key:'report',       de:'Bericht',                 en:'Report' },
-  'working-paper':     { key:'report',       de:'Working Paper',           en:'Working Paper' },
-  'dissertation':      { key:'book',         de:'Dissertation',            en:'Dissertation' },
-  'magazine-article':  { key:'other',        de:'Magazinartikel',          en:'Magazine Article' },
-  'newspaper-article': { key:'other',        de:'Zeitungsartikel',         en:'Newspaper Article' },
-  'book-review':       { key:'other',        de:'Rezension',               en:'Book Review' },
-  'review':            { key:'other',        de:'Rezension',               en:'Review' },
-  'online-resource':   { key:'other',        de:'Online-Ressource',        en:'Online Resource' },
-  'lecture-speech':    { key:'other',        de:'Vortrag',                 en:'Lecture / Speech' },
-  'translation':       { key:'other',        de:'Übersetzung',             en:'Translation' },
-  'other':             { key:'other',        de:'Sonstiges',               en:'Other' },
-  'undefined':         { key:'other',        de:'Sonstiges',               en:'Other' },
-};
-
-function mapType(t) {
-  return TYPE_MAP[(t||'').toLowerCase().replace(/_/g,'-')]
-    || { key:'other', de: t||'Sonstiges', en: t||'Other' };
-}
-
-async function loadPublications() {
-  const listEl = document.getElementById('publications-list');
-  try {
-    const d      = await get('/works');
-    const groups = d.group || [];
-
-    const works = groups
-      .map(g => (g['work-summary'] || []).reduce((b,s) => s.title ? s : b, g['work-summary'][0]))
-      .filter(Boolean)
-      .sort((a,b) => {
-        const ay = +(a['publication-date']?.year?.value || 0);
-        const by = +(b['publication-date']?.year?.value || 0);
-        return by - ay;
-      });
-
-    document.getElementById('pub-count').textContent = works.length;
-
-    if (!works.length) {
-      listEl.innerHTML = '<p style="color:var(--ink-faint);font-style:italic;">Keine Publikationen gefunden.</p>';
-      return;
-    }
-
-    const byYear = {};
-    works.forEach(w => {
-      const y = w['publication-date']?.year?.value || 'n.d.';
-      (byYear[y] = byYear[y] || []).push(w);
-    });
-
-    listEl.innerHTML = '';
-    Object.keys(byYear).sort((a,b) => b-a).forEach(year => {
-      const group = document.createElement('div');
-      group.className = 'pub-year-group';
-      group.innerHTML = `<div class="pub-year">${year}</div>`;
-
-      byYear[year].forEach(w => {
-        const title    = w.title?.title?.value || '(Kein Titel)';
-        const typeInfo = mapType(w.type);
-        const doi      = (w['external-ids']?.['external-id'] || []).find(e => e['external-id-type'] === 'doi');
-        const doiUrl   = doi ? `https://doi.org/${doi['external-id-value']}` : null;
-        const titleHtml = doiUrl ? `<a href="${doiUrl}" target="_blank" rel="noopener">${title}</a>` : title;
-        const journal  = w['journal-title']?.value || '';
-
-        const item = document.createElement('div');
-        item.className = 'pub-item';
-        item.dataset.type = typeInfo.key;
-        item.innerHTML = `
-          <div class="pub-bar"></div>
-          <div>
-            <div class="pub-title">${titleHtml}</div>
-            ${journal ? `<div class="pub-meta">${journal}</div>` : ''}
-            <span class="pub-type-tag de">${typeInfo.de}</span>
-            <span class="pub-type-tag en">${typeInfo.en}</span>
-          </div>`;
-        group.appendChild(item);
-      });
-      listEl.appendChild(group);
-    });
-  } catch(e) {
-    listEl.innerHTML = `
-      <div style="background:var(--bg-warm);border:1px dashed var(--rule);border-radius:4px;padding:2rem;text-align:center;">
-        <strong style="display:block;font-family:var(--serif);color:var(--ink-light);margin-bottom:.5rem;">
-          Publikationen konnten nicht geladen werden
-        </strong>
-        <span style="font-size:.85rem;color:var(--ink-faint);">
-          Bitte stellen Sie sicher, dass Ihr ORCID-Profil öffentlich sichtbar ist.
-        </span>
-      </div>`;
-  }
-}
-
-// ── Filter ──
 function filterPubs(type) {
   document.querySelectorAll('.pub-filter').forEach(b => b.classList.toggle('active', b.dataset.filter === type));
   document.querySelectorAll('.pub-item').forEach(i => { i.style.display = (type === 'all' || i.dataset.type === type) ? '' : 'none'; });
@@ -799,10 +1496,6 @@ function filterPubs(type) {
     g.style.display = [...g.querySelectorAll('.pub-item')].some(i => i.style.display !== 'none') ? '' : 'none';
   });
 }
-
-// ── Init ──
-document.getElementById('research-years').textContent = (new Date().getFullYear() - 2013) + '+';
-Promise.all([loadEducation(), loadEmployment(), loadKeywords(), loadUrls(), loadPublications(), loadFunding()]);
 </script>
 </body>
 </html>
