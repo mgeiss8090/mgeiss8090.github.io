@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://michaelgeiss.net/impressum.html">
+  <title>Impressum & Datenschutz – Michael Geiss</title>
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --ink-light: #555;
+      --ink-faint: #999;
+      --accent: #2c4a6e;
+      --accent-warm: #8b6348;
+      --accent-green: #4a6e52;
+      --bg: #faf9f6;
+      --bg-warm: #f3f0eb;
+      --rule: #d8d3cb;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* LANGUAGE BAR */
+    .lang-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,249,246,0.95);
+      border-bottom: 1px solid var(--rule);
+      display: flex; justify-content: flex-end;
+      padding: 0.55rem 2rem; gap: 0.6rem;
+      backdrop-filter: blur(10px);
+    }
+    .lang-btn {
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: none; border: 1px solid var(--rule);
+      padding: 0.2rem 0.7rem; cursor: pointer;
+      color: var(--ink-light); border-radius: 2px; transition: all 0.2s;
+    }
+    .lang-btn.active, .lang-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* LAYOUT */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    /* HEADER */
+    .page-header {
+      padding: 6rem 0 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-faint);
+      text-decoration: none; margin-bottom: 1.5rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+    }
+
+    /* SECTIONS */
+    section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-child { border-bottom: none; }
+    .section-label {
+      font-size: 0.67rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent-warm); margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .section-heading {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 1rem; line-height: 1.25;
+    }
+
+    /* CONTENT */
+    .content-block { max-width: 640px; }
+    .content-block p { color: var(--ink-light); margin-bottom: 0.9rem; }
+    .content-block p:last-child { margin-bottom: 0; }
+    .content-block a { color: var(--accent); text-decoration: none; }
+    .content-block a:hover { text-decoration: underline; }
+    .content-block strong { font-weight: 500; color: var(--ink); }
+
+    /* ADDRESS */
+    .address-block {
+      font-style: normal;
+      line-height: 1.9;
+      color: var(--ink-light);
+    }
+    .address-block strong { font-weight: 500; color: var(--ink); display: block; margin-bottom: 0.2rem; }
+
+    /* CONTACT ROW */
+    .contact-row { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.8rem; }
+    .contact-row a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .contact-row a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 0; text-align: center; font-size: 0.73rem; color: var(--ink-faint); }
+    footer a { color: inherit; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* LANG */
+    body.lang-en .de { display: none; }
+    body.lang-de .en { display: none; }
+
+    @media (max-width: 640px) {
+      .page-wrap { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body class="lang-de">
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('de')" id="btn-de">DE</button>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<div class="page-wrap">
+
+  <div class="page-header">
+    <a class="back-link" href="/">← <span class="de">Zurück zur Startseite</span><span class="en">Back to home</span></a>
+    <h1 class="page-title de">Impressum &amp; Datenschutz</h1>
+    <h1 class="page-title en">Legal Notice &amp; Privacy</h1>
+  </div>
+
+  <!-- IMPRESSUM -->
+  <section>
+    <div class="section-label de">Impressum</div>
+    <div class="section-label en">Legal Notice</div>
+
+    <h2 class="section-heading de">Verantwortlich für den Inhalt</h2>
+    <h2 class="section-heading en">Responsible for Content</h2>
+
+    <address class="address-block">
+      <strong>Michael Geiss</strong>
+      Pädagogische Hochschule Zürich<br>
+      Lagerstrasse 2<br>
+      8090 Zürich<br>
+      Schweiz
+    </address>
+    <div class="contact-row">
+      <a href="tel:+41433055473">+41 43 305 54 73</a>
+      <a href="mailto:michael.geiss@phzh.ch">michael.geiss@phzh.ch</a>
+    </div>
+  </section>
+
+  <!-- HAFTUNGSAUSSCHLUSS -->
+  <section>
+    <div class="section-label de">Haftung</div>
+    <div class="section-label en">Liability</div>
+
+    <div class="content-block de">
+      <h2 class="section-heading">Haftungsausschluss</h2>
+      <p>Die Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+      <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte kein Einfluss besteht. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.</p>
+    </div>
+
+    <div class="content-block en">
+      <h2 class="section-heading">Disclaimer</h2>
+      <p>The contents of this website have been compiled with the utmost care. However, no guarantee can be given for the accuracy, completeness, or currency of the content.</p>
+      <p>This website contains links to external third-party websites over whose content no control is exercised. The respective provider or operator of the linked pages is always responsible for their content. A permanent content check of the linked pages is unreasonable without concrete indications of a legal violation.</p>
+    </div>
+  </section>
+
+  <!-- DATENSCHUTZ -->
+  <section>
+    <div class="section-label de">Datenschutz</div>
+    <div class="section-label en">Privacy Policy</div>
+
+    <div class="content-block de">
+      <h2 class="section-heading">Datenschutzerklärung</h2>
+      <p>Diese Datenschutzerklärung gilt für die Website <strong>michaelgeiss.net</strong> und informiert über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten gemäss dem schweizerischen Datenschutzgesetz (DSG, in Kraft seit 1. September 2023).</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Hosting</h2>
+      <p>Diese Website wird über <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. GitHub kann beim Aufruf der Website technische Daten wie IP-Adressen in Server-Logs erfassen. Weitere Informationen finden sich in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">ORCID API</h2>
+      <p>Inhalte dieser Website (Publikationen, Vita, Projekte) werden automatisiert aus der öffentlichen <strong>ORCID API</strong> bezogen und beim täglichen Build-Prozess statisch in die Seite eingebettet. Beim Besuch dieser Website werden keine Daten an ORCID übermittelt.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Schriftarten</h2>
+      <p>Diese Website verwendet Schriftarten, die über <strong>Google Fonts</strong> (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) eingebunden sind. Beim Laden der Seite wird eine Verbindung zu Googles Servern hergestellt, wobei technische Daten übertragen werden können. Weitere Informationen finden sich in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>. Eine datenschutzfreundlichere Variante mit lokal gehosteten Schriften ist in Vorbereitung.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Lokaler Speicher (localStorage)</h2>
+      <p>Diese Website speichert die gewählte Spracheinstellung (Deutsch/Englisch) im lokalen Speicher des Browsers (<strong>localStorage</strong>). Es handelt sich um eine rein technische Funktion ohne Tracking-Zweck. Die gespeicherten Daten verlassen den Browser nicht und werden nicht an Dritte übermittelt. Sie können jederzeit über die Browser-Einstellungen gelöscht werden.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Cookies</h2>
+      <p>Diese Website setzt keine Cookies ein.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Kontakt</h2>
+      <p>Bei Fragen zum Datenschutz wenden Sie sich bitte an <a href="mailto:michael.geiss@phzh.ch">michael.geiss@phzh.ch</a>.</p>
+    </div>
+
+    <div class="content-block en">
+      <h2 class="section-heading">Privacy Policy</h2>
+      <p>This privacy policy applies to the website <strong>michaelgeiss.net</strong> and provides information about the nature, scope, and purpose of processing personal data in accordance with the Swiss Federal Act on Data Protection (FADP, in force since 1 September 2023).</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Hosting</h2>
+      <p>This website is hosted via <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). GitHub may collect technical data such as IP addresses in server logs when the website is accessed. Further information can be found in <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's privacy statement</a>.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">ORCID API</h2>
+      <p>Content on this website (publications, CV, projects) is automatically retrieved from the public <strong>ORCID API</strong> and statically embedded into the page during a daily build process. No data is transmitted to ORCID when visiting this website.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Fonts</h2>
+      <p>This website uses fonts delivered via <strong>Google Fonts</strong> (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). When the page loads, a connection to Google's servers is established, during which technical data may be transmitted. Further information can be found in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>. A privacy-friendly alternative using locally hosted fonts is being prepared.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Local Storage</h2>
+      <p>This website stores the selected language preference (German/English) in the browser's local storage (<strong>localStorage</strong>). This is a purely technical function with no tracking purpose. The stored data does not leave the browser and is not transmitted to third parties. It can be deleted at any time via the browser settings.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Cookies</h2>
+      <p>This website does not use cookies.</p>
+
+      <h2 class="section-heading" style="margin-top:1.5rem;">Contact</h2>
+      <p>For questions regarding data protection, please contact <a href="mailto:michael.geiss@phzh.ch">michael.geiss@phzh.ch</a>.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p><a href="/">michaelgeiss.net</a> · © 2026 Michael Geiss</p>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  localStorage.setItem('lang', lang);
+}
+setLang(localStorage.getItem('lang') || 'de');
+</script>
+</body>
+</html>
