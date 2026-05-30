@@ -294,6 +294,38 @@ html = f'''<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
   <style>
+  
+  @font-face {{
+      font-family: 'Libre Baskerville';
+      src: url('/fonts/libre-baskerville-v24-latin-regular.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'Libre Baskerville';
+      src: url('/fonts/libre-baskerville-v24-latin-700.woff2') format('woff2');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'Libre Baskerville';
+      src: url('/fonts/libre-baskerville-v24-latin-italic.woff2') format('woff2');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'DM Sans';
+      src: url('/fonts/dm-sans-v17-latin-300.woff2') format('woff2');
+      font-weight: 300; font-style: normal; font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'DM Sans';
+      src: url('/fonts/dm-sans-v17-latin-regular.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }}
+    @font-face {{
+      font-family: 'DM Sans';
+      src: url('/fonts/dm-sans-v17-latin-500.woff2') format('woff2');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }}
+    
     :root {{
       --ink: #1a1a1a;
       --ink-light: #555;
