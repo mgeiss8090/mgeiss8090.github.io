@@ -737,6 +737,7 @@ html = f'''<!DOCTYPE html>
 
 <footer>
   <p>© {datetime.now().year} Michael Geiss · michael.geiss@phzh.ch ·
+    <a href="/impressum.html" style="color:inherit;">Impressum</a> ·
     <span class="de">Daten via</span><span class="en">Data via</span>
     <a href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener" style="color:inherit;">ORCID API</a>
     · <span style="color:var(--ink-faint);">Built {build_date}</span>
