@@ -284,7 +284,7 @@ html = f'''<!DOCTYPE html>
       "@type": "Organization",
       "name": "Pädagogische Hochschule Zürich"
     }},
-    "email": "michael.geiss@gmail.com",
+    "email": "michael.geiss@phzh.ch",
     "sameAs": ["https://orcid.org/0000-0002-0809-2427"]
   }}
   </script>
@@ -745,7 +745,7 @@ html = f'''<!DOCTYPE html>
       <div class="contact-card">
         <div class="contact-card-label de">E-Mail</div>
         <div class="contact-card-label en">Email</div>
-        <div class="contact-card-value"><a href="mailto:michael.geiss@gmail.com">michael.geiss@gmail.com</a></div>
+        <div class="contact-card-value"><a href="mailto:michael.geiss@phzh.ch">michael.geiss@phzh.ch</a></div>
       </div>
       <div class="contact-card">
         <div class="contact-card-label">ORCID</div>
