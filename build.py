@@ -284,7 +284,7 @@ html = f'''<!DOCTYPE html>
       "@type": "Organization",
       "name": "Pädagogische Hochschule Zürich"
     }},
-    "email": "michael.geiss@phzh.ch",
+    "email": "michael.geiss@gmail.com",
     "sameAs": ["https://orcid.org/0000-0002-0809-2427"]
   }}
   </script>
@@ -717,7 +717,7 @@ html = f'''<!DOCTYPE html>
       <div class="contact-card">
         <div class="contact-card-label de">E-Mail</div>
         <div class="contact-card-label en">Email</div>
-        <div class="contact-card-value"><a href="mailto:michael.geiss@phzh.ch">michael.geiss@phzh.ch</a></div>
+        <div class="contact-card-value"><a href="mailto:michael.geiss@gmail.com">michael.geiss@gmail.com</a></div>
       </div>
       <div class="contact-card">
         <div class="contact-card-label">ORCID</div>
@@ -736,7 +736,7 @@ html = f'''<!DOCTYPE html>
 </div>
 
 <footer>
-  <p>© {datetime.now().year} Michael Geiss · michael.geiss@phzh.ch ·
+  <p>© {datetime.now().year} Michael Geiss ·
     <a href="/impressum.html" style="color:inherit;">Impressum</a> ·
     <span class="de">Daten via</span><span class="en">Data via</span>
     <a href="https://orcid.org/0000-0002-0809-2427" target="_blank" rel="noopener" style="color:inherit;">ORCID API</a>
